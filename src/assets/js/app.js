@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     toggleMenu() {
-      this.menu.classList.toggle('menu--open')
-      this.button.classList.toggle('menu-button--active')
+      this.menu.classList.toggle('header__nav--active')
+      this.button.classList.toggle('header__menu-button--active')
       this.overlay.hidden = !this.overlay.hidden
 
 
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     isMenuOpen() {
-      return this.menu.classList.contains('menu--open')
+      return this.menu.classList.contains('header__nav--active')
     }
 
     disableScroll() {
@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  const menu = document.querySelector('.menu')
-  const menuButton = document.querySelector('.menu-button')
+  const menu = document.querySelector('.header__nav')
+  const menuButton = document.querySelector('.header__menu-button')
 
   if (menu && menuButton) {
-    new Menu(menu, menuButton)
+    const menuClass = new Menu(menu, menuButton)
   }
 })
 

@@ -8,6 +8,7 @@
   width: 30%;
   background-color: lightblue;
   transition: all 1s ease;
+  display: none;
 }
 
 .menu--open {
@@ -26,6 +27,7 @@
   top: 0;
 
   z-index: 3;
+  display: none;
 }
 
 .menu-button--active {

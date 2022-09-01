@@ -23,11 +23,18 @@
     <div class="main__first-block">
         <section class="home">
             <div class="page-wrapper home__wrapper">
-                <div class="home__text-wrapper">
+                <div class="home__text-wrapper" hidden>
                     <h1 class="home__title bold140">BYER-ART</h1>
                     <div class="home__desc reg18">
                         <p>Малоэтажное проектирование и строительство коттеджей любого уровня сложности.</p>
                         <p>Создаем эргономичное пространство для семейной жизни, отдыха и работы.</p>
+                    </div>
+                </div>
+                <div class="home__text-wrapper home__text-wrapper--about-us">
+                    <h1 class="home__title bold140">О нас</h1>
+                    <div class="home__desc reg18">
+                        <p>Опыт работы в области архитектуры и дизайна с 2009 года.</p>
+                        <p>Наша команда состоит из квалифицированных кадров в области архитектуры, дизайна, конструктивных и инженерных решений. Специалисты состоят в НОПРИЗ.</p>
                     </div>
                 </div>
             </div>
@@ -36,7 +43,7 @@
             <button class="order__button">
                 <a href="#" class="med14 med14--white">Заказать проект</a>
             </button>
-            <svg class="order__icon"><use href="#orderIcon"></use></svg>
+            <svg class="order__icon arrow"><use href="#orderIcon"></use></svg>
         </div>
     </div>
 
@@ -45,7 +52,7 @@
     </div>
 
     <div class="main__second-block">
-        <div class="gallery">
+        <div class="gallery" hidden>
             <div class="page-wrapper gallery__wrapper">
                 <div class="gallery__img-container">
                     <img src="./assets/images/gallery/gallery-1-gray.png" alt="gallery-img">
@@ -60,6 +67,97 @@
                     <img src="./assets/images/gallery/gallery-3.png" alt="gallery-img">
                 </div>
             </div>
+        </div>
+        <!-- about-us -->
+        <div class="about-us">
+            <section class="consist page-wrapper">
+                <h2 class="bold50">Byer состоит в СРО и имеет лицензии</h2>
+                <div class="stroke-consist"></div>
+                <ul class="reg18">
+                    <li>СРО проектирование</li>
+                    <li>СРО изыскания</li>
+                    <li>СРО строительство</li>
+                    <li>Лицензия МЧС</li>
+                    <li>Лицензия МК</li>
+                </ul>
+            </section>
+
+            <div class="about-us__wrapper">
+                <div class="page-wrapper mySwiper__button-wrapper"><button class="mySwiper__button"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></button></div>
+                
+                <div class="about-us__slaider page-wrapper">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a></div>
+                            <div class="swiper-slide"><a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="about-us__accordion">
+                <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
+                    <h2 class="bold50 about-us__acc-title">Авторская архитектура</h2>
+                    <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                </button>
+                <div class="about-us__acc-wrapper page-wrapper">
+                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="acc-stroke"></div>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                </div>
+
+                <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
+                    <h2 class="bold50 about-us__acc-title">Современный стиль</h2>
+                    <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                </button>
+                <div class="about-us__acc-wrapper page-wrapper">
+                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="acc-stroke"></div>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                </div>
+
+                <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
+                    <h2 class="bold50 about-us__acc-title">Долговечность и безопасность</h2>
+                    <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                </button>
+                <div class="about-us__acc-wrapper page-wrapper">
+                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="acc-stroke"></div>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                </div>
+
+                <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
+                    <h2 class="bold50 about-us__acc-title">Энергоэффективность</h2>
+                    <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                </button>
+                <div class="about-us__acc-wrapper page-wrapper">
+                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="acc-stroke"></div>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                </div>
+
+                <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
+                    <h2 class="bold50 about-us__acc-title">Умный дом</h2>
+                    <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                </button>
+                <div class="about-us__acc-wrapper page-wrapper">
+                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="acc-stroke"></div>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                </div>
+
+                <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
+                    <h2 class="bold50 about-us__acc-title">Сопровождение</h2>
+                    <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                </button>
+                <div class="about-us__acc-wrapper page-wrapper">
+                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="acc-stroke"></div>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

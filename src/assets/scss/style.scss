@@ -3,13 +3,18 @@
 @import "fonts";
 @import "vendor/reset";
 
+:root {
+  --lighttheme: #F1F1F1;
+  --darktheme: #1B1B1B;
+}
+
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
   font-family: $reg;
-  color: $black;
+  color: var(--darktheme);
   font-style: normal;
-  background-color: $white;
+  background-color: var(--lighttheme);
   @include breakpoint($cos-bp) {
     font-size: calc(100vw / 1330 * 10);
   }
@@ -61,6 +66,7 @@ svg {
 @import './blocks/swiper.scss';
 @import './blocks/main.scss';
 @import './blocks/header.scss';
+@import './blocks/aboutUs.scss';
 
 
 
@@ -71,4 +77,19 @@ svg {
 
 .show {
   display: block;
+}
+
+.page-wrapper {
+  padding-left: $border;
+  padding-right: $border;
+
+  @include breakpoint($cos-bp) {
+    padding-left: $border-average;
+    padding-right: $border-average;
+  }
+  
+  @include breakpoint($sm-bp) {
+    padding-left: $border-min!important;
+    padding-right: $border-min!important;
+  }
 }

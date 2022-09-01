@@ -1,0 +1,198 @@
+div.about-us {
+  padding-top: 8rem;
+  @include breakpoint($sm-bp) {
+    padding-top: 0;
+  }
+  section.consist {
+    display: grid;
+    grid-template-columns: 47.1rem 1fr min-content;
+    column-gap: 2rem;
+
+    @include breakpoint($cos-bp) {
+      grid-template-columns: 28.4rem 1fr min-content;
+    }
+    @include breakpoint($sm-bp) {
+      grid-template-columns: 1fr;
+      row-gap: 1rem;
+    }
+    h2 {
+      @include breakpoint($sm-bp) {
+        width: 34rem;
+      }
+    }
+    div.stroke-consist {
+      width: 100%;
+      height: 0.1rem;
+      background-color: $gray;
+      margin-top: 1.8rem;
+      @include breakpoint($sm-bp) {
+        height: 3.5rem;
+        width: 0.1rem;
+        margin-top: 0;
+      }
+    }
+
+    ul.reg18 {
+      margin-top: 0.8rem;
+      li {
+        white-space: nowrap;
+        padding-bottom: 3rem;
+        @include breakpoint($cos-bp) {
+          padding-bottom: 2rem;
+        }
+      }
+    }
+  }
+  .mySwiper__button-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+    .mySwiper__button {
+      border: 0;
+    }
+  }
+  .about-us__icon {
+    transform: rotate(-45deg);
+    @include breakpoint($cos-bp) {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+    @include breakpoint($sm-bp) {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  .about-us__slaider {
+    padding-right: 0;
+    @include breakpoint($sm-bp) {
+      padding-left: 0!important;
+      padding-right: 0!important;
+    }
+    .mySwiper__imgContainer {
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  div.about-us__accordion {
+    margin-top: 20rem;
+    @include breakpoint($cos-bp) {
+      margin-top: 15rem;
+    }
+    @include breakpoint($sm-bp) {
+      margin-top: 12rem;
+    }
+    .about-us__accordion-item.page-wrapper {
+      background-color: var(--lighttheme);
+      padding-bottom: 1rem;
+      width: 100%;
+      text-align: start;
+      border: 0;
+      transition: padding-bottom .2s;
+      @include breakpoint($sm-bp) {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+      h2.bold50.about-us__acc-title {
+        display: inline;
+        padding-right: 3rem;
+        @include breakpoint($cos-bp) {
+          padding-right: 2rem;
+        }
+      }
+  
+      svg.arrow {
+        transform: rotate(45deg);
+        @include breakpoint($cos-bp) {
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+        @include breakpoint($sm-bp) {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+      svg.arrow--active {
+        transform: rotate(225deg);
+      }
+      @include breakpoint($cos-bp) {
+      }
+    }
+
+    .about-us__accordion-item--active {
+      padding-bottom: 4rem!important;
+      @include breakpoint($cos-bp) {
+        padding-bottom: 1rem!important;
+      }
+      @include breakpoint($sm-bp) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center!important;
+      }
+    }
+  
+    div.about-us__acc-wrapper.page-wrapper {
+      padding-left: 14rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s;
+      margin-bottom: 4rem;
+      @include breakpoint($cos-bp) {
+        margin-bottom: 2rem;
+        gap: 1rem;
+      }
+      @include breakpoint($sm-bp) {
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
+      .acc-stroke {
+        width: 100%;
+        height: 0.1rem;
+        border-bottom: 1px solid $gray;
+      }
+      .about-us__acc-desc {
+        @include breakpoint($sm-bp) {
+          width: 40rem;
+        }
+      }
+  
+      a.mySwiper__imgContainer {
+        width: 100%;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+
+
+.bold50 {
+  font-family: $bold;
+  font-weight: 700;
+  font-size: 5rem;
+  line-height: 5.9rem;
+  @include breakpoint($cos-bp) {
+    font-size: 3rem;
+    line-height: 3.9rem;
+  }
+  @include breakpoint($sm-bp) {
+    font-size: 3.4rem;
+  }
+}

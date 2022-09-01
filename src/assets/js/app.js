@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
 
@@ -58,9 +59,57 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menu && menuButton) {
     const menuClass = new Menu(menu, menuButton)
   }
+
+
+
+  
+const swiper = new Swiper(".mySwiper", {
+  slidesPerView: 1,
+  loop: true,
+  navigation: {
+      nextEl: ".mySwiper__button",
+  },
+});
 })
 
 
+const gallery = document.querySelectorAll('.gallery__img-container')
+
+function galleryImfFlip() {
+  if (gallery.length > 0) {
+    gallery.forEach(el => {
+      el.addEventListener('click', () => {
+        flipImg(el)
+      })
+    })
+  }
+}
+
+function flipImg(el) {
+  el.children[0].style.setProperty('transform', 'rotateY(-180deg)')
+  el.children[1].style.setProperty('transform', 'rotateY(0deg)')
+}
+
+galleryImfFlip()
+
+let acc = document.querySelectorAll(".about-us__accordion-item");
+let i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("about-us__accordion-item--active");
+    let panel = this.nextElementSibling;
+    let button = this.querySelector('svg')
+    if (panel.style.maxHeight && button) {
+      panel.style.maxHeight = null;
+      button.classList.toggle('arrow--active')
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      button.classList.toggle('arrow--active')
+    } 
+  });
+}
+acc[0].click()
 
 
 

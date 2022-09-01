@@ -26,9 +26,9 @@
     "IE 10"
   ],
   "dependencies": {
-    "@fancyapps/ui": "^4.0.27",
+    "@fancyapps/ui": "^4.0.31",
     "bootstrap": "^5.2.0-beta1",
     "choices.js": "^10.1.0",
-    "swiper": "^8.2.6"
+    "swiper": "^8.3.2"
   }
 }

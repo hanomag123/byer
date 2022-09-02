@@ -1,5 +1,5 @@
 .header {
-  @include breakpoint($sm-bp) {
+  @include breakpoint($xl-bp) {
     position: fixed;
     top: 0;
     width: 100%;
@@ -12,7 +12,7 @@
     align-items: center;
     position: relative;
 
-    @include breakpoint($sm-bp) {
+    @include breakpoint($xl-bp) {
       padding-top: 2rem;
       &::before {
         content: '';
@@ -23,17 +23,20 @@
         width: 100%;
         background-color: var(--lighttheme);
         z-index: 3;
+        @include breakpoint($sm-bp) {
+          z-index: 4;
+        }
       }
     }
 
     .header__logo {
       display: flex;
       z-index: 4;
-      div.header__logo-left {
+      span.header__logo-left {
         padding-right: 1rem;
       }
   
-      div.header__logo-right {
+      span.header__logo-right {
         padding: 0.7rem 3.6rem 0.6rem 0.9rem;
 
         border: 0.1rem solid var(--darktheme);
@@ -48,6 +51,12 @@
 
   .header__menu {
     padding-left: 1rem;
+    @include breakpoint($xl-bp) {
+      z-index: 4;
+    }
+    @include breakpoint($sm-bp) {
+      z-index: 0;
+    }
     .header__nav {
       display: flex;
       gap: 2.5rem;
@@ -74,12 +83,12 @@
         transform: translateY(-120%);
         transition: transform .5s;
       }
-      li {
+      .nav-button {
         position: relative;
         &::after {
           content: '';
           position: absolute;
-          bottom: 0;
+          bottom: -0.3rem;
           right: 0;
           height: 0.1rem;
           background-color: var(--darktheme);
@@ -92,7 +101,10 @@
           line-height: 120%;
         }
       }
-      li:hover::after {
+      .nav-button:hover::after {
+        width: 100%;
+      }
+      .nav-button--active::after {
         width: 100%;
       }
       .header__menu-item {

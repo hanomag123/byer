@@ -92,6 +92,8 @@ div.about-us {
       margin-top: 12rem;
     }
     .about-us__accordion-item.page-wrapper {
+      display: flex;
+      align-items: center;
       background-color: var(--lighttheme);
       padding-bottom: 1rem;
       width: 100%;
@@ -99,7 +101,6 @@ div.about-us {
       border: 0;
       transition: padding-bottom .2s;
       @include breakpoint($sm-bp) {
-        display: flex;
         justify-content: space-between;
         align-items: flex-end;
       }

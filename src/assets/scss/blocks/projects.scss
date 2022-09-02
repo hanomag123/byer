@@ -1,0 +1,56 @@
+div.projects {
+  margin-top: 10rem;
+  div.projects__title-wrapper.page-wrapper {
+    padding-bottom: 6rem;
+  }
+
+  div.projects__swiper-wrapper.page-wrapper {
+    div.projects__button-wrapper {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 2rem;
+      button.projects__button {
+        border: 0;
+        svg.arrow.about-us__icon {
+          transform: rotate(-45deg);
+          display: flex;
+          justify-content: flex-start;
+        }
+      }
+    }
+
+    div.swiper.projects__swiper {
+      div.swiper-wrapper {
+        div.swiper-slide {
+          div.swiper__slide-wrapper {
+            div.swiper__title.bold22 {
+              padding-bottom: 1.5rem;
+            }
+
+            a.swiper__imgContainer {
+              display: block;
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.bold22 {
+  font-family: $bold;
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 2.9rem;
+  /* identical to box height, or 29px */
+
+
+  /* белый */
+
+  color: var(--darktheme);
+}

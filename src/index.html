@@ -1,40 +1,65 @@
 <div class="main">
-    <header class="header">
-        <div class="header__wrapper page-wrapper">
-            
-          <div class="header__logo reg20">
-            <div class="header__logo-left">BYER</div>
-            <div class="header__logo-right">ART</div>
-          </div>
-      
-          <nav class="header__menu med14">
-            <ul class="header__nav">
-              <li><a href="#">О нас</a></li>
-              <li><a href="#">Проекты</a></li>
-              <li><a href="#">Этапы</a></li>
-              <li><a href="#">Калькулятор</a></li>
-              <li><a href="#">Контакты</a></li>
-            </ul>
-          </nav>
-
-          <button class="header__menu-button"></button>
-        </div>
-    </header>
     <div class="main__first-block">
+        <header class="header">
+            <div class="header__wrapper page-wrapper">
+                
+              <a href='main' class="header__logo reg20 nav-button">
+                <span class="header__logo-left">BYER</span>
+                <span class="header__logo-right">ART</span>
+              </a>
+          
+              <nav class="header__menu med14">
+                <ul class="header__nav">
+                  <li><a href="aboutUs" class="nav-button">О нас</a></li>
+                  <li><a href="projects" class="nav-button">Проекты</a></li>
+                  <li><a href="stages" class="nav-button">Этапы</a></li>
+                  <li><a href="calc" class="nav-button">Калькулятор</a></li>
+                  <li><a href="contacts" class="nav-button">Контакты</a></li>
+                </ul>
+              </nav>
+    
+              <button class="header__menu-button"></button>
+            </div>
+        </header>
         <section class="home">
             <div class="page-wrapper home__wrapper">
-                <div class="home__text-wrapper" hidden>
+                <div class="home__text-wrapper" id="main">
                     <h1 class="home__title bold140">BYER-ART</h1>
                     <div class="home__desc reg18">
                         <p>Малоэтажное проектирование и строительство коттеджей любого уровня сложности.</p>
                         <p>Создаем эргономичное пространство для семейной жизни, отдыха и работы.</p>
                     </div>
                 </div>
-                <div class="home__text-wrapper home__text-wrapper--about-us">
+                <div class="home__text-wrapper home__text-wrapper--about-us" id="aboutUs">
                     <h1 class="home__title bold140">О нас</h1>
                     <div class="home__desc reg18">
                         <p>Опыт работы в области архитектуры и дизайна с 2009 года.</p>
                         <p>Наша команда состоит из квалифицированных кадров в области архитектуры, дизайна, конструктивных и инженерных решений. Специалисты состоят в НОПРИЗ.</p>
+                    </div>
+                </div>
+                <div class="home__text-wrapper" id="projects">
+                    <h1 class="home__title bold140">Проекты</h1>
+                    <div class="home__desc reg18">
+                        <p>Проектирование, строительство и авторский надзор до сдачи готового объекта «под ключ»: создание индивидуального архитектурного проекта, дизайн интерьера и индивидуального ландшафта территории.</p>
+                    </div>
+                </div>
+                <div class="home__text-wrapper" id="stages">
+                    <h1 class="home__title bold140">Этапы</h1>
+                    <div class="home__desc reg18">
+                        <p>Не просто сделаем проект дома, но и поможем построить. У нас классная талантливая команда от архитекторов до строителей, которую мы собирали годами, приблизит ваш заезд в собственный современный дом. Мы будем приезжать на стройку, контролировать выполнение проекта. Поможем найти материалы и поставщиков.</p>
+                    </div>
+                </div>
+                <div class="home__text-wrapper" id="calc">
+                    <h1 class="home__title bold140">Рассчет</h1>
+                    <div class="home__desc reg18">
+                        <p>У вас есть объект? Сейчас это просто участок земли или голые стены. Мы можем вдознуть в него жизнь. Давайте создавать вместе.</p>
+                        <p>Наш калькулятор поможет посчитать ориентировачную стоимости проектных работ по предполагаемой общей площади дома.</p>
+                    </div>
+                </div>
+                <div class="home__text-wrapper" id="contacts">
+                    <h1 class="home__title bold140">Контакты</h1>
+                    <div class="home__desc reg18">
+                        <p>Дом по индивидуальному проекту — органично вписывается в текущий ландшафт, имеет безупречную планировку, соответствует вашим текущим и будущим потребностям.</p>
                     </div>
                 </div>
             </div>
@@ -52,7 +77,7 @@
     </div>
 
     <div class="main__second-block">
-        <div class="gallery" hidden>
+        <div class="gallery right-block" id="main-scroll">
             <div class="page-wrapper gallery__wrapper">
                 <div class="gallery__img-container">
                     <img src="./assets/images/gallery/gallery-1-gray.png" alt="gallery-img">
@@ -69,7 +94,7 @@
             </div>
         </div>
         <!-- about-us -->
-        <div class="about-us">
+        <div class="about-us right-block" id="aboutUs-scroll">
             <section class="consist page-wrapper">
                 <h2 class="bold50">Byer состоит в СРО и имеет лицензии</h2>
                 <div class="stroke-consist"></div>
@@ -83,13 +108,19 @@
             </section>
 
             <div class="about-us__wrapper">
-                <div class="page-wrapper mySwiper__button-wrapper"><button class="mySwiper__button"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></button></div>
+                <div class="page-wrapper mySwiper__button-wrapper">
+                    <button class="mySwiper__button"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></button>
+                </div>
                 
                 <div class="about-us__slaider page-wrapper">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide"><a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a></div>
-                            <div class="swiper-slide"><a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a></div>
+                            <div class="swiper-slide">
+                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,5 +190,53 @@
             </div>
 
         </div>
+        <!-- projects -->
+        <div class="projects right-block black-theme" id="projects-scroll">
+            <div class="projects__title-wrapper page-wrapper">
+                <h2 class="bold50">Проектирование малоэтажных домов в составе:</h2>
+            </div>
+
+            <div class="projects__swiper-wrapper page-wrapper">
+                <div class="projects__button-wrapper">
+                    <button class="projects__button"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></button>
+                </div>
+
+                <div class="swiper projects__swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="swiper__slide-wrapper">
+                            <div class="swiper__title bold22">Архитектурные решения</div>
+                            <a data-fancybox="projects" href='./assets/images/projects/projects-1.jpg' class="swiper__imgContainer">
+                                <img src="./assets/images/projects/projects-1.jpg" alt="projects-img">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="swiper__slide-wrapper">
+                            <div class="swiper__title bold22">Конструктивные решения</div>
+                            <a data-fancybox="projects" href='./assets/images/projects/projects-2.jpg' class="swiper__imgContainer">
+                                <img src="./assets/images/projects/projects-2.jpg" alt="projects-img">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="swiper__slide-wrapper">
+                            <div class="swiper__title bold22">Инженерные решения</div>
+                            <a data-fancybox="projects" href='./assets/images/projects/projects-3.jpg' class="swiper__imgContainer">
+                                <img src="./assets/images/projects/projects-3.jpg" alt="projects-img">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- stages -->
+        <div class="stages right-block" id="stages-scroll">
+
+        </div>
+
     </div>
 </div>

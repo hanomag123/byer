@@ -15,6 +15,10 @@ html {
   color: var(--darktheme);
   font-style: normal;
   background-color: var(--lighttheme);
+  transition: background-color 0.3s;
+  ::-webkit-scrollbar {
+    width: 0;
+  }
   @include breakpoint($cos-bp) {
     font-size: calc(100vw / 1330 * 10);
   }
@@ -61,7 +65,7 @@ svg {
 
 
 /* Blocks */
-
+@import './blocks/projects.scss';
 @import './blocks/menu.scss';
 @import './blocks/swiper.scss';
 @import './blocks/main.scss';

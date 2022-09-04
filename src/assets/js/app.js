@@ -167,29 +167,25 @@ function clickhandler() {
 const observeTarget = document.querySelectorAll('.right-block')
 function mainObserver() {
   const options = {
-    rootMargin: '-200px'
+    // rootMargin: '-200px'
+    threshold: 0.05
   }
   function vdHandler(els) {
       els.forEach((data) => {
-      const idname = data.target.id.slice(0, -7)
-      const button = document.querySelector(`.nav-button[href="${idname}"]`)
-      const leftBlock = document.querySelector(`#${idname}`)
+
       if (data.isIntersecting === true) {
-          const isBlackTheme = Boolean(data.target.classList.contains('black-theme'));
-          if (isBlackTheme === true) {
-            changeTheme()
-          } else {
-            changeThemeBack()
-          }
-          buttonHandler(navButton, button)
-          leftBlocks.forEach(el => {
-            removeClass(el, 'home__text-wrapper--active')
-          })
-          addClass(leftBlock, 'home__text-wrapper--active')
+          data.target.classList.add('is-visible')
+
+
+
+          
       } else {
-        removeClass(button, 'nav-button--active')
-        removeClass(leftBlock, 'home__text-wrapper--active')
+        data.target.classList.remove('is-visible')
+        
+        // removeClass(button, 'nav-button--active')
+        // removeClass(leftBlock, 'home__text-wrapper--active')
       }
+      firstActive()
       })
   }
   if (observeTarget.length > 0) {
@@ -202,6 +198,28 @@ function mainObserver() {
 }
 
 mainObserver()
+function firstActive() {
+  const first = document.querySelector('.is-visible')
+  const idname = first.id.slice(0, -7)
+  const leftBlock = document.querySelector(`#${idname}`)
+  const button = document.querySelector(`.nav-button[href="${idname}"]`)
+
+  const isBlackTheme = Boolean(first.classList.contains('black-theme'));
+  if (isBlackTheme === true) {
+    changeTheme()
+  } else {
+    changeThemeBack()
+  }
+
+  buttonHandler(navButton, button)
+
+  leftBlocks.forEach(el => {
+    removeClass(el, 'home__text-wrapper--active')
+  })
+  if (first) {
+    addClass(leftBlock, 'home__text-wrapper--active')
+  }
+}
 
 function changeTheme() {
   document.documentElement.style.setProperty('--darktheme', '#F1F1F1')

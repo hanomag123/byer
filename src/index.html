@@ -52,7 +52,7 @@
                 <div class="home__text-wrapper" id="calc">
                     <h1 class="home__title bold140">Рассчет</h1>
                     <div class="home__desc reg18">
-                        <p>У вас есть объект? Сейчас это просто участок земли или голые стены. Мы можем вдознуть в него жизнь. Давайте создавать вместе.</p>
+                        <p>У вас есть объект? Сейчас это просто участок земли или голые стены. Мы можем вдохнуть в него жизнь. Давайте создавать вместе.</p>
                         <p>Наш калькулятор поможет посчитать ориентировачную стоимости проектных работ по предполагаемой общей площади дома.</p>
                     </div>
                 </div>
@@ -235,7 +235,131 @@
         </div>
         <!-- stages -->
         <div class="stages right-block black-theme" id="stages-scroll">
+            <ol class="stages__list page-wrapper">
+                <li class="stages__list-container">
+                    <div class="stages__list-title bold50">Размещение заявки на сайте</div>
+                    <div class="stages__list-desc reg18">Оставьте заявку на нашем сайте и наши менеджеры свяжутся с вами для уточнения ддеталей</div>
+                </li>
+                <li class="stages__list-container">
+                    <div class="stages__list-title bold50">Индивидуальная встреча</div>
+                    <div class="stages__list-desc reg18">Подберем вам подходящий день и время</div>
+                </li>
+                <li class="stages__list-container">
+                    <div class="stages__list-title bold50">Сбор исходных данных</div>
+                    <div class="stages__list-desc reg18">Для точной стоимости и сроков посетим участок</div>
+                </li>
+                <li class="stages__list-container">
+                    <div class="stages__list-title bold50">Составление технического задания</div>
+                    <div class="stages__list-desc reg18">Составим техническое задания после полного изучения данных</div>
+                </li>
+                <li class="stages__list-container">
+                    <div class="stages__list-title bold50">Договор</div>
+                    <div class="stages__list-desc reg18">Заключаем официальный договор на оказание услуг</div>
+                </li>
+                <li class="stages__list-container">
+                    <div class="stages__list-title bold50">Оплата</div>
+                    <div class="stages__list-desc reg18">Вы оплачиваете полную стоимость услуг, после чего мы преступаем к проректированию</div>
+                </li>
+            </ol>
+        </div>
+        <!-- calc -->
+        <div class="calc right-block" id="calc-scroll">
+            <div class="calc__wrapper page-wrapper">
+                <h3 class="calc__title bold50">Калькулятор стоимости проекта</h3>
+                <form action="post" class="calc__form">
+                    <div class="calc__container">
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Ориентировочная площадь дома</h4>
+                            <input  class="range-input" type="range" min="1" max="1000" value="500" name="square" oninput="this.nextElementSibling.value = this.value">
+                            <output>500</output>
+                        </div>
+    
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Какие разделы вас интересуют?</h4>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Архитектурные решения</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Конструктивные решения</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Инженерные решения</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Технология “умный дом”</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Дизайн интерьера</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Ландшафтный дизайн</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Авторский надзор</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="calc__container">
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">В каком городе/поселке планируется дом?</h4>
+                            <input  class="custom-input" type="text" name="city">
+                        </div>
 
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Материалы дома</h4>
+                            <label for="select" class="select">
+                                <input class="select__input" type="radio" name="list" value="not_changed" id="bg" checked />
+                                <input class="select__input" type="radio" name="list" value="not_changed" id="select">
+                                <label class="bg" for="bg"></label>
+                                <div class="items">
+                                <input class="select__input" type="radio" name="list" value="first_value" id="list[0]">
+                                <label for="list[0]">Газобетон</label>
+                                <input class="select__input" type="radio" name="list" value="second_value" id="list[1]">
+                                <label for="list[1]">Ракушечник</label>
+                                <input class="select__input" type="radio" name="list" value="second_value" id="list[2]">
+                                <label for="list[2]">Керамоблок</label>
+                                <input class="select__input" type="radio" name="list" value="second_value" id="list[3]">
+                                <label for="list[3]">каркас</label>
+                                <span id="text">Газобетон / ракушечник / керамоблок / каркас</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Когда вам нужен готовый проект?</h4>
+                            <input  class="custom-input" type="text" name="whenProject" placeholder="Через месяц">
+                        </div>
+
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Сколько этажей планируется в доме?</h4>
+                            <label for="floor" class="select-floor">
+                                <input class="select__input" type="radio" name="floor" value="not_changed" id="bg1" checked/>
+                                <input class="select__input" type="radio" name="floor" value="not_changed" id="floor">
+                                <label class="bg" for="bg1"></label>
+                                <div class="items-floor">
+                                <input class="select__input" type="radio" name="floor-list" value="1floor" id="floor-list[0]">
+                                <label for="floor-list[0]">1 этаж</label>
+                                <input class="select__input" type="radio" name="floor-list" value="2floor" id="floor-list[1]">
+                                <label for="floor-list[1]">2 этажа</label>
+                                <input class="select__input" type="radio" name="floor-list" value="3floor" id="floor-list[2]">
+                                <label for="floor-list[2]">3 этажа</label>
+                                <span class="select__text">1 этаж</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="calc__button bold18">Рассчитать</button>
+                </form>
+            </div>
         </div>
 
     </div>

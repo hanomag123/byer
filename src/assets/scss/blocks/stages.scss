@@ -1,0 +1,49 @@
+.stages {
+  padding-top: 5rem;
+  .stages__list {
+    li.stages__list-container {
+      position: relative;
+      counter-increment: inst;
+      padding-top: 5rem;
+      padding-bottom: 10rem;
+      &::before {
+        content: counter(inst, decimal-leading-zero);
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        
+
+        font-weight: 400;
+        font-size: 1.8rem;
+        line-height: 2.3rem;
+        @include breakpoint($cos-bp) {
+          font-size: 1.2rem;
+          line-height: 1.5rem;
+        }
+        @include breakpoint($sm-bp) {
+          font-size: 2.3rem;
+          line-height: 2.7rem;
+        } 
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0.8rem;
+        left: 0;
+        width: 4.3rem;
+        height: 0.1rem;
+        border-bottom: 0.1rem solid var(--darktheme);
+        transform: rotate(-45deg);
+        transform-origin: right;
+      }
+      .stages__list-title {
+
+      }
+
+      .stages__list-desc {
+
+      }
+    }
+  }
+}

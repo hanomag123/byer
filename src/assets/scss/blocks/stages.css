@@ -1,0 +1,1 @@
+.stages .stages__list li.stages__list-container{position:relative;counter-increment:inst}.stages .stages__list li.stages__list-container::before{content:counter(inst, decimal-leading-zero);position:absolute;left:-1rem;top:0;color:#fff}

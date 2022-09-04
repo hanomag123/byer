@@ -99,7 +99,7 @@ div.about-us {
       width: 100%;
       text-align: start;
       border: 0;
-      transition: padding-bottom .2s;
+      transition: padding-bottom .2s, background-color 0.3s;
       @include breakpoint($sm-bp) {
         justify-content: space-between;
         align-items: flex-end;

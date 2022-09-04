@@ -65,12 +65,14 @@ svg {
 
 
 /* Blocks */
+@import './blocks/calc.scss';
 @import './blocks/projects.scss';
 @import './blocks/menu.scss';
 @import './blocks/swiper.scss';
 @import './blocks/main.scss';
 @import './blocks/header.scss';
 @import './blocks/aboutUs.scss';
+@import './blocks/stages.scss';
 
 
 

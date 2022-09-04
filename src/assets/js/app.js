@@ -168,11 +168,10 @@ const observeTarget = document.querySelectorAll('.right-block')
 function mainObserver() {
   const options = {
     // rootMargin: '-200px'
-    threshold: 0.05
+    threshold: 0.1
   }
   function vdHandler(els) {
       els.forEach((data) => {
-
       if (data.isIntersecting === true) {
           data.target.classList.add('is-visible')
 
@@ -200,23 +199,24 @@ function mainObserver() {
 mainObserver()
 function firstActive() {
   const first = document.querySelector('.is-visible')
-  const idname = first.id.slice(0, -7)
-  const leftBlock = document.querySelector(`#${idname}`)
-  const button = document.querySelector(`.nav-button[href="${idname}"]`)
 
-  const isBlackTheme = Boolean(first.classList.contains('black-theme'));
-  if (isBlackTheme === true) {
-    changeTheme()
-  } else {
-    changeThemeBack()
-  }
 
-  buttonHandler(navButton, button)
 
   leftBlocks.forEach(el => {
     removeClass(el, 'home__text-wrapper--active')
   })
   if (first) {
+    const idname = first.id.slice(0, -7)
+    const leftBlock = document.querySelector(`#${idname}`)
+    const button = document.querySelector(`.nav-button[href="${idname}"]`)
+    buttonHandler(navButton, button)
+    const isBlackTheme = Boolean(first.classList.contains('black-theme'));
+    if (isBlackTheme === true) {
+      changeTheme()
+    } else {
+      changeThemeBack()
+    }
+  
     addClass(leftBlock, 'home__text-wrapper--active')
   }
 }

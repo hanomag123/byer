@@ -15,7 +15,7 @@ html {
   color: var(--darktheme);
   font-style: normal;
   background-color: var(--lighttheme);
-  transition: background-color 0.3s;
+  transition: background-color 0.4s ease-in-out;
   ::-webkit-scrollbar {
     width: 0;
   }
@@ -65,6 +65,7 @@ svg {
 
 
 /* Blocks */
+@import './blocks/contacts.scss';
 @import './blocks/calc.scss';
 @import './blocks/projects.scss';
 @import './blocks/menu.scss';

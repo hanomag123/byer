@@ -20,6 +20,7 @@
     
               <button class="header__menu-button"></button>
             </div>
+            <div class="modal-overlay"></div>
         </header>
         <section class="home">
             <div class="page-wrapper home__wrapper">
@@ -79,15 +80,15 @@
     <div class="main__second-block">
         <div class="gallery right-block" id="main-scroll">
             <div class="page-wrapper gallery__wrapper">
-                <div class="gallery__img-container">
+                <div class="gallery__img-container flip">
                     <img src="./assets/images/gallery/gallery-1-gray.png" alt="gallery-img">
                     <img src="./assets/images/gallery/gallery-1.png" alt="gallery-img">
                 </div>
-                <div class="gallery__img-container gallery__img-container--max">
+                <div class="gallery__img-container flip gallery__img-container--max">
                     <img src="./assets/images/gallery/gallery-2-gray.png" alt="gallery-img">
                     <img src="./assets/images/gallery/gallery-2.png" alt="gallery-img">
                 </div>
-                <div class="gallery__img-container">
+                <div class="gallery__img-container flip">
                     <img src="./assets/images/gallery/gallery-3-gray.png" alt="gallery-img">
                     <img src="./assets/images/gallery/gallery-3.png" alt="gallery-img">
                 </div>
@@ -270,8 +271,10 @@
                     <div class="calc__container">
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Ориентировочная площадь дома</h4>
-                            <input  class="range-input" type="range" min="1" max="1000" value="500" name="square" oninput="this.nextElementSibling.value = this.value">
-                            <output>500</output>
+                            <div class="range-input calc__range-input">
+                                <input  class="range-input__input" type="range" min="1" max="1000" value="500" name="square" oninput="this.nextElementSibling.value = this.value">
+                                <output class="range-input__output">500</output>
+                            </div>
                         </div>
     
                         <div class="calc__form-item">
@@ -310,27 +313,20 @@
                     <div class="calc__container">
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">В каком городе/поселке планируется дом?</h4>
-                            <input  class="custom-input" type="text" name="city">
+                            <input  class="custom-input" type="text" name="city" placeholder="Город">
                         </div>
 
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Материалы дома</h4>
-                            <label for="select" class="select">
-                                <input class="select__input" type="radio" name="list" value="not_changed" id="bg" checked />
-                                <input class="select__input" type="radio" name="list" value="not_changed" id="select">
-                                <label class="bg" for="bg"></label>
-                                <div class="items">
-                                <input class="select__input" type="radio" name="list" value="first_value" id="list[0]">
-                                <label for="list[0]">Газобетон</label>
-                                <input class="select__input" type="radio" name="list" value="second_value" id="list[1]">
-                                <label for="list[1]">Ракушечник</label>
-                                <input class="select__input" type="radio" name="list" value="second_value" id="list[2]">
-                                <label for="list[2]">Керамоблок</label>
-                                <input class="select__input" type="radio" name="list" value="second_value" id="list[3]">
-                                <label for="list[3]">каркас</label>
-                                <span id="text">Газобетон / ракушечник / керамоблок / каркас</span>
-                                </div>
-                            </label>
+                            <div class="custom-select" style="width:100%">
+                                <select>
+                                  <option value="0">Газобетон / ракушечник / керамоблок / каркас</option>
+                                  <option value="1">Газобетон</option>
+                                  <option value="2">Ракушечник</option>
+                                  <option value="3">Керамоблок</option>
+                                  <option value="3">Каркас</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div class="calc__form-item">
@@ -340,27 +336,95 @@
 
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Сколько этажей планируется в доме?</h4>
-                            <label for="floor" class="select-floor">
-                                <input class="select__input" type="radio" name="floor" value="not_changed" id="bg1" checked/>
-                                <input class="select__input" type="radio" name="floor" value="not_changed" id="floor">
-                                <label class="bg" for="bg1"></label>
-                                <div class="items-floor">
-                                <input class="select__input" type="radio" name="floor-list" value="1floor" id="floor-list[0]">
-                                <label for="floor-list[0]">1 этаж</label>
-                                <input class="select__input" type="radio" name="floor-list" value="2floor" id="floor-list[1]">
-                                <label for="floor-list[1]">2 этажа</label>
-                                <input class="select__input" type="radio" name="floor-list" value="3floor" id="floor-list[2]">
-                                <label for="floor-list[2]">3 этажа</label>
-                                <span class="select__text">1 этаж</span>
-                                </div>
-                            </label>
+                            <div class="custom-select" style="width:100%">
+                                <select>
+                                  <option value="0">1 этаж</option>
+                                  <option value="1">1 этаж</option>
+                                  <option value="2">2 этажа</option>
+                                  <option value="3">3 этажа</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
 
-                    <button class="calc__button bold18">Рассчитать</button>
+                    <button class="calc__button bold18">
+                        <span>Заказать</span>
+                        <svg class="arrow calc__button-arrow"><use href="#orderIcon"></use></svg>
+                    </button>
+
+                    <div class="calc__modal-container" hidden>
+                        <div class="bold50">Заказать проект</div>
+                        <div class="reg18">Оставьте заявку на составление проекта и мы свяжемся с вами для уточнения деталей</div>
+                        <div class="form-container">
+                            <input type="text" class="custom-input" placeholder="Имя">
+                            <input type="tel" class="custom-input" placeholder="Телефон">
+                            <input type="text" class="custom-input" placeholder="Сообщение">
+                            <div class="form-container__doc">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" value="value-1">
+                                    <span class="med14 contacts__checkbox">Согласен на обработку персональных данных</span>
+                                </label>
+                            </div>
+                            <button class="bold18" type="submit">
+                                <span>Отправить</span>
+                                <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
-
+        <!-- contacts -->
+        <section class="contacts right-block" id="contacts-scroll">
+            <div class="contacts__block page-wrapper">
+                <div class="contacts__container">
+                    <div class="contacts__container-item">
+                        <h3 class="bold24">Телефон</h3>
+                        <a class="reg18" href="tel:+ 7 (978) 357-98-93">+ 7 (978) 357-98-93</a>
+                    </div>
+                    <div class="contacts__container-item">
+                        <h3 class="bold24">Адрес</h3>
+                        <a class="reg18" href="#">г.Москва, ул. Доброслободская, д. 1/3 </a>
+                    </div>
+                    <div class="contacts__container-item">
+                        <h3 class="bold24">Почта</h3>
+                        <a class="reg18" href="tel:+ 7 (978) 357-98-93">byer-art@mail.ru</a>
+                    </div>
+                </div>
+                <div class="contacts__container">
+                    <h3 class="bold24">Напишите нам</h3>
+                    <form action="post" class="form-container">
+                        <input type="text" class="custom-input" placeholder="Имя">
+                        <input type="tel" class="custom-input" placeholder="Телефон">
+                        <input type="text" class="custom-input" placeholder="Сообщение">
+                        <div class="form-container__doc">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="med14 contacts__checkbox">Согласен на обработку персональных данных</span>
+                            </label>
+                        </div>
+                        <button class="bold18">
+                            <span>Отправить</span>
+                            <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="contacts__images-container">
+                <div class="contacts__img-container flip">
+                    <img src="./assets/images/contacts/contacts-1-gray.jpg" alt="img">
+                    <img src="./assets/images/contacts/contacts-1.jpg" alt="img">
+                </div>
+                <div class="contacts__img-container flip">
+                    <img src="./assets/images/contacts/contacts-2-gray.jpg" alt="img">
+                    <img src="./assets/images/contacts/contacts-2.jpg" alt="img">
+                </div>
+                <div class="contacts__img-container flip">
+                    <img src="./assets/images/contacts/contacts-3-gray.jpg" alt="img">
+                    <img src="./assets/images/contacts/contacts-3.jpg" alt="img">
+                </div>
+            </div>
+            <span class="contacts__right reg12 page-wrapper">2021 © Все права защищены</span>
+        </section>
     </div>
 </div>

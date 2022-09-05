@@ -1,4 +1,5 @@
 .calc {
+  padding-top: 10rem;
   padding-bottom: 18.3rem;
   div.calc__wrapper {
     h3.calc__title {
@@ -26,6 +27,49 @@
           }
           .calc__checkbox {
             cursor: pointer;
+          }
+          .calc__range-input {
+            margin-bottom: 3rem;
+          }
+        }
+      }
+      .calc__button {
+        border: 0;
+        text-align: start;
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        .calc__button-arrow {
+          transform: rotate(-45deg);
+        }
+        
+      }
+
+      .calc__modal-container {
+        width: 51rem;
+        padding: 5rem;
+        overflow: scroll;
+        height: min-content;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $white;
+        color: $black;
+        z-index: 99;
+        box-shadow: 0 0 10px rgb(0 0 0 / 50%);
+        .reg18 {
+          padding-top: 1rem;
+          padding-bottom: 5rem;
+        }
+        input {
+          border-bottom: 1px solid $black;
+        }
+        button {
+          color: $black;
+          svg {
+            stroke: $black;
           }
         }
       }
@@ -95,22 +139,6 @@
   background-color: #e9ecef;
 }
 
-
-  .range-input::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
-    appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .range-input::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
-    cursor: pointer; /* Cursor on hover */
-  }
 
   .bold18 {
     font-family: $bold;
@@ -260,7 +288,7 @@
   // border-top: 0.1rem solid var(--darktheme);
   display: none;
   background: var(--lighttheme);
-  padding: 1rem;
+  padding-bottom: 1rem;
   padding-left: 0;
   font-family: $medium;
   font-style: normal;
@@ -313,97 +341,18 @@
 
 
 
-
-
-
-.select__text
-{
-  position: absolute;
-  display: block;
-  top: 0;
-}
-
-.select-floor
-{
-  display: inline-block;
-  width: 100%;
-  height: 2.8rem;
-  line-height: 3rem;
+.custom-select {
   position: relative;
 }
 
-.select-floor:before
-{
-  content: url("data:image/svg+xml,%3Csvg width='9' height='6' viewBox='0 0 9 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L4.5 5L8 1' stroke='%23767676'/%3E%3C/svg%3E%0A");
-  display: inline-block;
-  background: transparent;
-  position: absolute;
-  right: 0.7rem;
-  top: -0.6rem;
-  z-index: 2;
-  text-align: center;
-  // line-height: 26px;
-  border: 0;
-  cursor: pointer;
-  height: 1rem;
+.custom-select select {
+  display: none; /*hide original SELECT element: */
 }
 
-.select-floor input[name="floor-list"]:not(:checked) ~ .select__text
-{
-  padding-bottom: 1rem;
-  color: var(--darktheme);
-  font-family: $light;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 1.4rem;
-  line-height: 125%;
-  /* identical to box height, or 18px */
-  
-  font-feature-settings: 'pnum' on, 'lnum' on;
-  
-  /* серый2 */
-  
-  color: $gray2;
-  background: var(--lighttheme);
-  width: 100%;
-}
 
-.select-floor input[name="floor-list"]:checked ~ .select__text
-{
-  background: transparent;
-  color: transparent;
-  z-index: 2;
-}
-
-#floor:disabled ~ .items-floor .select__text
-{
-  background: var(--lighttheme);
-}
-
-.items-floor
-{
-  display: block;
-  min-height: 3rem;
-  position: absolute;
-  border: 0;
-  border-bottom: 0.1rem solid var(--darktheme);
-  overflow: hidden;
-  width: 100%;
-  cursor: pointer;
-}
-
-#floor:not(:checked) ~ .items-floor
-{
-  // height: 30px;
-}
-
-.items-floor label
-{
-  // border-top: 0.1rem solid var(--darktheme);
-  display: none;
-  background: var(--lighttheme);
-  padding: 1rem;
-  padding-left: 0;
+.select-selected {
+  transition: background-color .4s ease-in-out;
+  background-color: var(--lighttheme);
   font-family: $medium;
   font-style: normal;
   font-weight: 500;
@@ -416,38 +365,175 @@
   /* Черный */
   
   color: var(--darktheme);
+  padding-top: 0;
 }
 
-.items-floor label:hover
-{
-  background: #eee;
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: url("data:image/svg+xml,%3Csvg width='9' height='6' viewBox='0 0 9 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L4.5 5L8 1' stroke='%23767676'/%3E%3C/svg%3E%0A");
+  top: 0;
+  right: 1rem;
+  width: 1rem;
+  height: 100%;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  transform: translateY(-25%) rotate(180deg);
+}
+
+/* style the items (options), including the selected item: */
+.select-items,.select-selected {
+  font-family: $medium;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 125%;
+  /* identical to box height, or 18px */
+  
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  
+  /* Черный */
+  
+  color: var(--darktheme);
+  padding-left: 0;
+  padding-bottom: 1rem;
+  border: 0.1rem solid transparent;
+  border-color: transparent transparent var(--darktheme) transparent;
   cursor: pointer;
 }
-
-#floor:checked ~ .items-floor
-{
-  padding-top: 2.8rem;
+.select-items div {
+  padding: 1rem;
+  padding-left: 0;
+}
+.select-items {
+  padding-bottom: 0;
 }
 
-#floor:checked ~ .items-floor label
-{
-  display: block;
-}
-
-.items-floor input:checked + label
-{
-  display: block!important;
-  border: none;
-  background: var(--lighttheme);
-}
-
-#floor:checked ~ .bg
-{
-  position: fixed;
-  top: 0;
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: var(--lighttheme);
+  top: 100%;
   left: 0;
-  bottom: 0;
   right: 0;
-  z-index: 0;
-  background: rgba(0,0,0,0);
+  z-index: 99;
 }
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.select-selected--light {
+  font-family: $light;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.4rem;
+  line-height: 125%;
+  /* identical to box height, or 18px */
+  
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  
+  /* серый2 */
+  
+  color: $gray2;
+}
+
+
+
+input[type="range"] {
+  -webkit-appearance: none;
+  margin-right: 15px;
+  width: 100%;
+  height: 0.1rem;
+  background: var(--darktheme);
+  border-radius: 5px;
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  position: relative;
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  background: var(--darktheme);
+  cursor: pointer;
+  box-shadow: 0 0 2px 0 #555;
+}
+input[type=range]::-webkit-slider-runnable-track  {
+  -webkit-appearance: none;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+}
+
+.range-input {
+  position: relative;
+  .range-input__input {
+    &::before, 
+    &::after {
+      position: absolute;
+      top: 1.7rem;
+
+      /* Raleway/Medium/14 */
+
+      font-family: $medium;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 125%;
+      /* identical to box height, or 18px */
+
+      font-feature-settings: 'pnum' on, 'lnum' on;
+
+      /* серый2 */
+
+      color: $gray2;
+    }
+    &::before {
+      content: '1';
+      left: 0;
+    }
+    &::after {
+      content: '1000';
+      right: 0;
+    }
+  }
+  .range-input__output {
+    position: absolute;
+    top: 1.7rem;
+    right: 50%;
+    transform: translateX(50%);
+
+    /* Raleway/Medium/14 */
+
+    font-family: $medium;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 125%;
+    /* identical to box height, or 18px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* Черный */
+
+    color: var(--darktheme);
+  }
+}
+
+button {
+  transition: color .3s;
+  &:active {
+    color: $gray2;
+  }
+}
+
+

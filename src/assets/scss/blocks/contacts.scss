@@ -4,6 +4,10 @@
   grid-template-rows: 1fr min-content;
   height: 100vh;
   column-gap: 14rem;
+  @include breakpoint($sm-bp) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
   div.contacts__block {
     align-self: center;
     display: flex;
@@ -34,6 +38,10 @@
     grid-column: 2 / 3;
     grid-row: 1 /3;
     overflow: hidden;
+    @include breakpoint($sm-bp) {
+      grid-column: auto;
+      grid-row: 2 / 3;
+    }
     div.contacts__img-container {
       img {
         width: 100%;

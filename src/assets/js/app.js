@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
     _init() {
       document.body.appendChild(this.overlay)
       this.overlay.classList.add('overlay')
-
       this.overlay.addEventListener('click', this.toggleMenu.bind(this))
       this.button.addEventListener('click', this.toggleMenu.bind(this))
     }
@@ -31,6 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         this.enableScroll()
       }
+    }
+    closeMenu() {
+      this.menu.classList.remove('header__nav--active')
+      this.button.classList.remove('header__menu-button--active')
+      this.overlay.hidden = false
+
+      this.enableScroll()
     }
 
     isMenuOpen() {
@@ -55,11 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const menu = document.querySelector('.header__nav')
   const menuButton = document.querySelector('.header__menu-button')
+  const logo = document.querySelector('.header__logo')
+  let menuClass = null
 
   if (menu && menuButton) {
-    const menuClass = new Menu(menu, menuButton)
+    menuClass = new Menu(menu, menuButton)
   }
-
 
 
   
@@ -121,128 +128,10 @@ for (i = 0; i < acc.length; i++) {
 }
 acc[0].click()
 
-const navButton = document.querySelectorAll('.nav-button')
-const leftBlocks = document.querySelectorAll('.home__text-wrapper')
-const homeBlock = document.querySelector('.home')
-
-function changeLeftSlide() {
-  if (navButton) {
-    navButton.forEach(el => {
-      el.addEventListener('click', () => {
-        clickhandler()
-        buttonHandler(navButton, el)
-      })
-    })
-  }
-}
-
-changeLeftSlide()
-
-function buttonHandler(arr, element) {
-  arr.forEach(el => {
-    removeClass(el, 'nav-button--active')
-  })
-  addClass(element, 'nav-button--active')
-}
-
-function clickhandler() {
-  event.preventDefault()
-  const href = event.target.closest('a').href
-  if(href) {
-    const hrefText = href.replace(/^.*(?=\/)./gi, '')
-    for(let elem of leftBlocks) {
-      if (elem.id === hrefText) {
-        addClass(elem, 'home__text-wrapper--active')
-        const scrollElem = document.querySelector(`#${hrefText}-scroll`)
-        if (scrollElem) {
-          scroll(scrollElem)
-        }
-      } else {
-        elem.classList.remove('home__text-wrapper--active')
-      }
-    }
-  }
-}
-
-const observeTarget = document.querySelectorAll('.right-block')
-function mainObserver() {
-  const options = {
-    // rootMargin: '-200px'
-    threshold: 0.1
-  }
-  function vdHandler(els) {
-      els.forEach((data) => {
-      if (data.isIntersecting === true) {
-          data.target.classList.add('is-visible')
 
 
 
-          
-      } else {
-        data.target.classList.remove('is-visible')
-        
-        // removeClass(button, 'nav-button--active')
-        // removeClass(leftBlock, 'home__text-wrapper--active')
-      }
-      firstActive()
-      })
-  }
-  if (observeTarget.length > 0) {
-    const observer = new IntersectionObserver(vdHandler, options)
-  
-    observeTarget.forEach(el => {
-        observer.observe(el)
-    })
-  }
-}
 
-mainObserver()
-function firstActive() {
-  const first = document.querySelector('.is-visible')
-
-
-
-  leftBlocks.forEach(el => {
-    removeClass(el, 'home__text-wrapper--active')
-  })
-  if (first) {
-    const idname = first.id.slice(0, -7)
-    const leftBlock = document.querySelector(`#${idname}`)
-    const button = document.querySelector(`.nav-button[href="${idname}"]`)
-    buttonHandler(navButton, button)
-    const isBlackTheme = Boolean(first.classList.contains('black-theme'));
-    if (isBlackTheme === true) {
-      changeTheme()
-    } else {
-      changeThemeBack()
-    }
-  
-    addClass(leftBlock, 'home__text-wrapper--active')
-  }
-}
-
-function changeTheme() {
-  document.documentElement.style.setProperty('--darktheme', '#F1F1F1')
-  document.documentElement.style.setProperty('--lighttheme', '#1B1B1B')
-}
-function changeThemeBack() {
-  document.documentElement.style.setProperty('--darktheme', '#1B1B1B')
-  document.documentElement.style.setProperty('--lighttheme', '#F1F1F1')
-}
-
-function addClass(elem, className) {
-  elem.classList.add(className)
-}
-
-function removeClass(elem, className) {
-  elem.classList.remove(className)
-}
-
-function scroll(el) {
-  el.scrollIntoView({block: "start", behavior: "smooth"});
-}
-
-addClass(leftBlocks[0], 'home__text-wrapper--active')
 
 const selectFunc = () => {
   var x, i, j, l, ll, selElmnt, a, b, c;
@@ -333,21 +222,46 @@ selectFunc()
 
 const modal = document.querySelector('.calc__modal-container')
 const orderbutton = document.querySelector('.order__button')
-const modaloverlay = document.querySelector('.modal__overlay')
+const modaloverlay = document.querySelector('.modal-overlay')
 
 function changeButton() {
-  if (modal && orderbutton) {
+  if (modal && orderbutton && modaloverlay) {
+    modaloverlay.addEventListener('click', toggleModal)
     orderbutton.addEventListener('click', () => {
       event.preventDefault()
       if (orderbutton.classList.contains('order__button--calc')) {
 
       } else {
-        modal.hidden = !modal.hidden
+        toggleModal()
       }
     })
   }
 }
 changeButton()
+function toggleModal () {
+  modal.hidden = !modal.hidden
+  modaloverlay.hidden = !modaloverlay.hidden
+  if (modal.hidden === false) {
+    disableScroll()
+  } else {
+    enableScroll()
+  }
+}
+
+function disableScroll() {
+  // Get the current page scroll position
+  const scrollTop = window.pageYOffset  || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset  || document.documentElement.scrollLeft;
+
+      // if any scroll is attempted, set this to the previous value
+      window.onscroll = function() {
+          window.scrollTo(scrollLeft, scrollTop);
+      };
+}
+
+function enableScroll() {
+window.onscroll = function() {};
+}
 
 function addMask() {
   [].forEach.call( document.querySelectorAll('input[type="tel"]'), function(input) {
@@ -388,9 +302,240 @@ function addMask() {
 addMask()
 })
 
+const navButton = document.querySelectorAll('.nav-button')
+const leftBlocks = document.querySelectorAll('.home__text-wrapper')
+const rightBlocks = document.querySelectorAll('.right-block')
+
+if (window.matchMedia("(min-width: 1025px)").matches) {
+  /* the viewport is at least 400 pixels wide */
+
+  maxApp()
+} else {
+  minApp()
+}
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1024) {
+    location.reload()
+  } else {
+    location.reload()
+  }
+})
+function maxApp () {
+  leftBlocks.forEach(el => {
+      el.style.setProperty('position', 'absolute')
+  })
+  rightBlocks.forEach(el => {
+    el.hidden = false
+  })
+
+  navButton.forEach(el => {
+    if (window.innerWidth <= 1024) {
+      console.log('hello')
+      el.addEventListener('click', () => {
+
+      })
+    } else {
+      el.removeEventListener('click', function prevPlusHandler () {
+        event.preventDefault()
+        navClickHandler(el)
+      })
+    }
+  })
+  function mainObserver() {
+  const options = {
+    // rootMargin: '-200px'
+    threshold: 0.1
+  }
+  function vdHandler(els) {
+      els.forEach((data) => {
+      if (data.isIntersecting === true) {
+          data.target.classList.add('is-visible')
+      } else {
+        data.target.classList.remove('is-visible')
+      }
+      firstActive()
+      })
+  }
+  if (rightBlocks.length > 0 && window.innerWidth > 1024) {
+    const observer = new IntersectionObserver(vdHandler, options)
+  
+    rightBlocks.forEach(el => {
+        observer.observe(el)
+    })
+  } else {
+    rightBlocks.forEach(el => {
+      observer.unobserve(el)
+  })
+  }
+}
+function buttonHandler(arr, element) {
+  arr.forEach(el => {
+    removeClass(el, 'nav-button--active')
+  })
+  addClass(element, 'nav-button--active')
+}
 
 
 
+
+function addClass(elem, className) {
+  elem.classList.add(className)
+}
+
+function removeClass(elem, className) {
+  elem.classList.remove(className)
+}
+
+function scroll(el) {
+  el.scrollIntoView({block: "start", behavior: "smooth"});
+}
+
+
+if (window.innerWidth > 1024) {
+  mainObserver()
+}
+function firstActive() {
+  const first = document.querySelector('.is-visible')
+
+
+
+  leftBlocks.forEach(el => {
+    removeClass(el, 'home__text-wrapper--active')
+  })
+  if (first) {
+    const idname = first.id.slice(0, -7)
+    const leftBlock = document.querySelector(`#${idname}`)
+    const button = document.querySelector(`.nav-button[href="${idname}"]`)
+    buttonHandler(navButton, button)
+    const isBlackTheme = Boolean(first.classList.contains('black-theme'));
+    if (isBlackTheme === true) {
+      changeTheme()
+    } else {
+      changeThemeBack()
+    }
+  
+    addClass(leftBlock, 'home__text-wrapper--active')
+  }
+}
+addClass(leftBlocks[0], 'home__text-wrapper--active')
+function changeTheme() {
+  document.documentElement.style.setProperty('--darktheme', '#F1F1F1')
+  document.documentElement.style.setProperty('--lighttheme', '#1B1B1B')
+}
+function changeThemeBack() {
+  document.documentElement.style.setProperty('--darktheme', '#1B1B1B')
+  document.documentElement.style.setProperty('--lighttheme', '#F1F1F1')
+}
+function changeLeftSlide() {
+  if (navButton) {
+    if (window.innerWidth > 1024) {
+      navButton.forEach(el => {
+        el.addEventListener('click', () => {
+          clickhandler()
+          buttonHandler(navButton, el)
+        })
+      })
+    } else {
+      navButton.forEach(el => {
+        el.removeEventListener('click', () => {
+          clickhandler()
+          buttonHandler(navButton, el)
+        })
+      })
+    }
+  }
+}
+
+changeLeftSlide()
+
+function clickhandler() {
+  event.preventDefault()
+  const href = event.target.closest('a').href
+  if(href) {
+    const hrefText = href.replace(/^.*(?=\/)./gi, '')
+    for(let elem of leftBlocks) {
+      if (elem.id === hrefText) {
+        addClass(elem, 'home__text-wrapper--active')
+        const scrollElem = document.querySelector(`#${hrefText}-scroll`)
+        if (scrollElem) {
+          scroll(scrollElem)
+        }
+      } else {
+        elem.classList.remove('home__text-wrapper--active')
+      }
+    }
+  }
+}
+}
+
+
+
+function minApp () {
+  /* the viewport is less than 400 pixels wide */
+  let activeNav = null
+  let activeHome = document.querySelector('.home__text-wrapper--active')
+  let activeMainBlock = null
+  if (activeHome) {
+    activeMainBlock = document.querySelector(`#${activeHome.id}-scroll`)
+  }
+
+
+
+  rightBlocks.forEach(el => {
+    if (el !== activeMainBlock) {
+      el.hidden = true
+    }
+  })
+  if (!activeHome) {
+    leftBlocks[0].classList.add('home__text-wrapper--active')
+  }
+  leftBlocks.forEach(el => {
+    if (!el.classList.contains('home__text-wrapper--active')) {
+      el.style.setProperty('position', 'absolute')
+    }
+  })
+  navButton.forEach(el => {
+    if (window.innerWidth <= 1024) {
+      console.log('hello')
+      el.addEventListener('click', () => {
+        event.preventDefault()
+        navClickHandler(el)
+      })
+    } else {
+      el.removeEventListener('click', () => {
+        event.preventDefault()
+        navClickHandler(el)
+      })
+    }
+  })
+
+  function navClickHandler (el) {
+    const idname = el.href.replace(/^.*(?=\/)./gi, '')
+    const leftBlock = document.querySelector(`#${idname}`)
+    const rightBlock = document.querySelector(`#${idname}-scroll`)
+    if (activeNav) {
+      activeNav.classList.remove('nav-button--active')
+    }
+    nextBlockChange(activeMainBlock, rightBlock)
+    mainBlockChange(activeHome, leftBlock)
+    el.classList.add('nav-button--active')
+    activeNav = el
+  }
+
+  function mainBlockChange(prevBlock, nextBlock) {
+    prevBlock.style.setProperty('position', 'absolute')
+    prevBlock.classList.remove('home__text-wrapper--active')
+    nextBlock.style.setProperty('position', 'static')
+    nextBlock.classList.add('home__text-wrapper--active')
+    activeHome = nextBlock
+  }
+  function nextBlockChange(prevBlock, nextBlock) {
+    prevBlock.hidden = true
+    nextBlock.hidden = false
+    activeMainBlock = nextBlock
+  }
+}
 
 
 

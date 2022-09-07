@@ -6,6 +6,10 @@
       counter-increment: inst;
       padding-top: 5rem;
       padding-bottom: 10rem;
+      @include breakpoint($sm-bp) {
+        padding-top: 6rem;
+        padding-bottom: 8rem;
+      }
       &::before {
         content: counter(inst, decimal-leading-zero);
 

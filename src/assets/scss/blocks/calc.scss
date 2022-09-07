@@ -1,7 +1,10 @@
 .calc {
   padding-top: 10rem;
   padding-bottom: 18.3rem;
-  height: 100vh;
+  min-height: 100vh;
+  @include breakpoint($sm-bp) {
+    padding-bottom: 5rem;
+  }
   div.calc__wrapper {
     h3.calc__title {
       padding-bottom: 7rem;
@@ -13,7 +16,7 @@
       justify-content: space-between;
       column-gap: 8.6rem;
       row-gap: 5rem;
-      @include breakpoint($sm-bp) {
+      @include breakpoint($cos-bp) {
         grid-template-columns: 1fr;
       }
       .calc__container {
@@ -49,7 +52,6 @@
         }
         
       }
-
       .calc__modal-container {
         width: 51rem;
         height: min-content;
@@ -158,6 +160,12 @@
     /* Черный */
     
     color: var(--darktheme);
+    @include breakpoint($cos-bp) {
+      font-size: 1.4rem;
+    }
+    @include breakpoint($xl-bp) {
+      font-size: 2.2rem;
+    }
   }
 
   .custom-input {

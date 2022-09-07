@@ -172,6 +172,9 @@
     font-size: 1rem;
     line-height: 100%;
   }
+  @include breakpoint($sm-bp) {
+    font-size: 2rem;
+  }
 }
 
 .reg20 {

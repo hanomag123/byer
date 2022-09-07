@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeMenu() {
       this.menu.classList.remove('header__nav--active')
       this.button.classList.remove('header__menu-button--active')
-      this.overlay.hidden = false
+      this.overlay.hidden = true
 
       this.enableScroll()
     }
@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  let isMobile = false
   const menu = document.querySelector('.header__nav')
   const menuButton = document.querySelector('.header__menu-button')
   const logo = document.querySelector('.header__logo')
@@ -68,6 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     menuClass = new Menu(menu, menuButton)
   }
 
+  
+//   let changeOption = option => {
+//     isMobile = option;
+//  }
 
   
 const swiper = new Swiper(".mySwiper", {
@@ -79,12 +84,19 @@ const swiper = new Swiper(".mySwiper", {
 });
 
 const swiper2 = new Swiper(".projects__swiper", {
-  slidesPerView: 2,
-  spaceBetween: 15,
+  slidesPerView: 1.2,
+  spaceBetween: 10,
   loop: true,
   navigation: {
       nextEl: ".projects__button",
   },
+  breakpoints: {
+    // when window width is >= 640px
+    650: {
+      slidesPerView: 2,
+      spaceBetween: 15
+    }
+  }
 });
 
 
@@ -130,7 +142,24 @@ acc[0].click()
 
 
 
-
+const calcButton = document.querySelector('.calc__button')
+const formSubmit = document.querySelector('.main-submit')
+formSubmit.addEventListener('click', () => {
+  formSubmit.hidden = true
+    enableScroll()
+})
+calcButton.addEventListener('click', () => {
+  event.preventDefault()
+  toggleModal()
+})
+for(let form of document.forms) {
+  form.addEventListener('submit', () => {
+    event.preventDefault()
+    formSubmit.hidden = !formSubmit.hidden
+    form.querySelector('.close-icon').click()
+    disableScroll()
+  })
+}
 
 
 const selectFunc = () => {
@@ -223,18 +252,45 @@ selectFunc()
 const modal = document.querySelector('.calc__modal-container')
 const orderbutton = document.querySelector('.order__button')
 const modaloverlay = document.querySelector('.modal-overlay')
+const mainModal = document.querySelector('.main-form')
+const mainFormOverlay = document.querySelector('.main-form__overlay')
+const mainModalCloseIcon = mainModal.querySelector('.close-icon')
+
 
 function changeButton() {
   if (modal && orderbutton && modaloverlay) {
+    mainModalCloseIcon.addEventListener('click', firstModalToggle)
+    mainFormOverlay.addEventListener('click', firstModalToggle)
     modaloverlay.addEventListener('click', toggleModal)
     orderbutton.addEventListener('click', () => {
       event.preventDefault()
-      if (orderbutton.classList.contains('order__button--calc')) {
-
+      const calc = document.querySelector('#calc-scroll')
+      if (window.innerWidth > 1024) {
+        if (orderbutton.classList.contains('order__button--active')) {
+          if (calc && window.innerWidth > 1024) {
+            scroll(calc)
+          } 
+        } else {
+          firstModalToggle()
+        }
       } else {
-        toggleModal()
+        if (orderbutton.classList.contains('order__button--active')) {
+          document.querySelector('.nav-button[href="calc"').click()
+        } else {
+          document.querySelector('.nav-button[href="calc"').click()
+          firstModalToggle()
+        }
       }
     })
+  }
+}
+function firstModalToggle () {
+  event.preventDefault()
+  mainModal.hidden = !mainModal.hidden
+  if (mainModal.hidden) {
+    enableScroll()
+  } else {
+    disableScroll()
   }
 }
 changeButton()
@@ -300,7 +356,7 @@ function addMask() {
 
 }
 addMask()
-})
+
 
 const navButton = document.querySelectorAll('.nav-button')
 const leftBlocks = document.querySelectorAll('.home__text-wrapper')
@@ -308,19 +364,41 @@ const rightBlocks = document.querySelectorAll('.right-block')
 
 if (window.matchMedia("(min-width: 1025px)").matches) {
   /* the viewport is at least 400 pixels wide */
-
+  document.body.classList.add('isDesc')
+  document.body.classList.remove('isMobile')
   maxApp()
 } else {
+  document.body.classList.remove('isDesc')
+  document.body.classList.add('isMobile')
   minApp()
 }
-
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 1024) {
-    location.reload()
-  } else {
+const mutationObs = new MutationObserver((target) => {
+  if (target[0].oldValue !== target[0].target.className) {
     location.reload()
   }
 })
+
+const config = {
+  attributes: true,
+  childList: false,
+  subtree: false,
+  attributeOldValue: true
+};
+
+mutationObs.observe(document.body, config)
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 1024) {
+    document.body.classList.add('isDesc')
+    document.body.classList.remove('isMobile')
+  } else {
+    document.body.classList.remove('isDesc')
+    document.body.classList.add('isMobile')
+  }
+})
+function scroll(el) {
+  el.scrollIntoView({block: "start", behavior: "smooth"});
+}
+
 function maxApp () {
   leftBlocks.forEach(el => {
       el.style.setProperty('position', 'absolute')
@@ -387,9 +465,6 @@ function removeClass(elem, className) {
   elem.classList.remove(className)
 }
 
-function scroll(el) {
-  el.scrollIntoView({block: "start", behavior: "smooth"});
-}
 
 
 if (window.innerWidth > 1024) {
@@ -410,23 +485,19 @@ function firstActive() {
     buttonHandler(navButton, button)
     const isBlackTheme = Boolean(first.classList.contains('black-theme'));
     if (isBlackTheme === true) {
+      orderbutton.classList.add('order__button--active')
+      // orderbutton.querySelector('a').innerHTML = 'Калькулятор'
       changeTheme()
     } else {
       changeThemeBack()
+      orderbutton.classList.remove('order__button--active')
     }
   
     addClass(leftBlock, 'home__text-wrapper--active')
   }
 }
 addClass(leftBlocks[0], 'home__text-wrapper--active')
-function changeTheme() {
-  document.documentElement.style.setProperty('--darktheme', '#F1F1F1')
-  document.documentElement.style.setProperty('--lighttheme', '#1B1B1B')
-}
-function changeThemeBack() {
-  document.documentElement.style.setProperty('--darktheme', '#1B1B1B')
-  document.documentElement.style.setProperty('--lighttheme', '#F1F1F1')
-}
+
 function changeLeftSlide() {
   if (navButton) {
     if (window.innerWidth > 1024) {
@@ -469,7 +540,14 @@ function clickhandler() {
 }
 }
 
-
+function changeTheme() {
+  document.documentElement.style.setProperty('--darktheme', '#F1F1F1')
+  document.documentElement.style.setProperty('--lighttheme', '#1B1B1B')
+}
+function changeThemeBack() {
+  document.documentElement.style.setProperty('--darktheme', '#1B1B1B')
+  document.documentElement.style.setProperty('--lighttheme', '#F1F1F1')
+}
 
 function minApp () {
   /* the viewport is less than 400 pixels wide */
@@ -497,10 +575,10 @@ function minApp () {
   })
   navButton.forEach(el => {
     if (window.innerWidth <= 1024) {
-      console.log('hello')
       el.addEventListener('click', () => {
         event.preventDefault()
         navClickHandler(el)
+        console.log(menuClass.closeMenu())
       })
     } else {
       el.removeEventListener('click', () => {
@@ -521,6 +599,7 @@ function minApp () {
     mainBlockChange(activeHome, leftBlock)
     el.classList.add('nav-button--active')
     activeNav = el
+    document.body.scrollIntoView()
   }
 
   function mainBlockChange(prevBlock, nextBlock) {
@@ -531,6 +610,13 @@ function minApp () {
     activeHome = nextBlock
   }
   function nextBlockChange(prevBlock, nextBlock) {
+    if (nextBlock.classList.contains('black-theme')) {
+      orderbutton.classList.add('order__button--active')
+      changeTheme()
+    } else {
+      orderbutton.classList.remove('order__button--active')
+      changeThemeBack()
+    }
     prevBlock.hidden = true
     nextBlock.hidden = false
     activeMainBlock = nextBlock
@@ -538,6 +624,10 @@ function minApp () {
 }
 
 
+
+
+
+})
 
 
 

@@ -1,4 +1,32 @@
 <div class="main">
+    <form class="main-form" hidden>
+        <button class="close-icon"></button>
+        <div class="bold50">Заказать проект</div>
+        <div class="reg18">Оставьте заявку на составление проекта и мы свяжемся с вами для уточнения деталей</div>
+        <div class="form-container">
+            <input type="text" class="custom-input" placeholder="Имя">
+            <input type="tel" class="custom-input" placeholder="Телефон">
+            <input type="text" class="custom-input" placeholder="Сообщение">
+            <div class="form-container__doc">
+                <label class="custom-checkbox">
+                    <input type="checkbox" value="value-1">
+                    <span class="med14 contacts__checkbox">Согласен на обработку персональных данных</span>
+                </label>
+            </div>
+            <button class="bold18" type="submit">
+                <span>Отправить</span>
+                <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+            </button>
+        </div>
+    </form>
+    <div class="main-form__overlay"></div>
+    <div class="main-submit" hidden>
+        <div class="main-submit__container">
+            <button class="close-icon"></button>
+            <div class="bold28">Ваша заявка отправлена</div>
+            <div class="reg18">Наши менеджеры свяжутся с вами для уточнения деталей</div>
+        </div>
+    </div>
     <div class="modal-overlay" hidden></div>
     <div class="main__first-block">
         <header class="header">
@@ -67,7 +95,8 @@
         </section>
         <div class="page-wrapper order">
             <button class="order__button">
-                <a href="#" class="med14 med14--white">Заказать проект</a>
+                <a href="#" class="med14 med14--white order__button-order">Заказать проект</a>
+                <a href="#" class="med14 med14--white order__button-calc">Калькулятор</a>
             </button>
             <svg class="order__icon arrow"><use href="#orderIcon"></use></svg>
         </div>
@@ -305,7 +334,27 @@
                             </label>
                             <label class="calc__checkbox custom-checkbox">
                                 <input type="checkbox" value="value-1">
-                                <span class="reg18">Авторский надзор</span>
+                                <span class="reg18">Электроснабжение</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Электроосвещение</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Водоснабжение</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Водоотведение</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Вентиляция</span>
+                            </label>
+                            <label class="calc__checkbox custom-checkbox">
+                                <input type="checkbox" value="value-1">
+                                <span class="reg18">Слаботочные сети</span>
                             </label>
                         </div>
                     </div>
@@ -317,14 +366,15 @@
                         </div>
 
                         <div class="calc__form-item">
-                            <h4 class="calc__form-title bold22">Материалы дома</h4>
+                            <h4 class="calc__form-title bold22">Материал конструкций</h4>
                             <div class="custom-select" style="width:100%">
                                 <select>
-                                  <option value="0">Газобетон / ракушечник / керамоблок / каркас</option>
-                                  <option value="1">Газобетон</option>
-                                  <option value="2">Ракушечник</option>
-                                  <option value="3">Керамоблок</option>
-                                  <option value="3">Каркас</option>
+                                  <option value="0">Кирпич / Железобетон / Сруб / Клееный брус</option>
+                                  <option value="1">Кирпич</option>
+                                  <option value="2">Железобетон</option>
+                                  <option value="3">Сруб</option>
+                                  <option value="3">Клееный брус</option>
+                                  <option value="3">Иной</option>
                                 </select>
                             </div>
                         </div>
@@ -338,12 +388,60 @@
                             <h4 class="calc__form-title bold22">Сколько этажей планируется в доме?</h4>
                             <div class="custom-select" style="width:100%">
                                 <select>
-                                  <option value="0">1 этаж</option>
-                                  <option value="1">1 этаж</option>
-                                  <option value="2">2 этажа</option>
-                                  <option value="3">3 этажа</option>
+                                  <option value="0">1</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3 или более</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Количество человек?</h4>
+                            <div class="custom-select" style="width:100%">
+                                <select>
+                                  <option value="0">1</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="3">4 - 10</option>
+                                  <option value="3">Другое</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Ландшафтный стиль</h4>
+                            <div class="custom-select" style="width:100%">
+                                <select>
+                                  <option value="0">Выбрать ландшафтный стиль</option>
+                                  <option value="1">Деревенский</option>
+                                  <option value="2">Японский</option>
+                                  <option value="3">Голландский</option>
+                                  <option value="3">Альпийский</option>
+                                  <option value="3">Русская усадьба</option>
+                                  <option value="3">Экостиль</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Дополнительные работы</h4>
+                            <div class="custom-select" style="width:100%">
+                                <select>
+                                  <option value="0">Выбрать дополнительные работы</option>
+                                  <option value="1">Устройство газона</option>
+                                  <option value="2">Создание пруда</option>
+                                  <option value="3">Дренажные системы</option>
+                                  <option value="3">Автополив</option>
+                                  <option value="3">Садовое освещение</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="calc__form-item">
+                            <h4 class="calc__form-title bold22">Перечень помещений</h4>
+                            <input  class="custom-input" type="text" name="roomNames" placeholder="Перечень помещений">
                         </div>
                     </div>
 
@@ -393,7 +491,7 @@
                 </div>
                 <div class="contacts__container">
                     <h3 class="bold24">Напишите нам</h3>
-                    <form action="post" class="form-container">
+                    <form class="form-container">
                         <input type="text" class="custom-input" placeholder="Имя">
                         <input type="tel" class="custom-input" placeholder="Телефон">
                         <input type="text" class="custom-input" placeholder="Сообщение">

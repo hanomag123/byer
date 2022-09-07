@@ -1,5 +1,8 @@
 div.projects {
   margin-top: 10rem;
+  @include breakpoint($sm-bp) {
+    margin-top: 0;
+  }
   div.projects__title-wrapper.page-wrapper {
     padding-bottom: 6rem;
   }

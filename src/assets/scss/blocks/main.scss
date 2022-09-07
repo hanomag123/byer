@@ -80,11 +80,11 @@
       }
   }
   .order {
-      margin-top: 20rem;
+      margin-top: 1rem;
       display: flex;
       margin-bottom: 6rem;
       @include breakpoint($cos-bp) {
-        margin-top: 10rem;
+        margin-top: 1rem;
       }
       @include breakpoint($xl-bp) {
         margin-top: 4rem;

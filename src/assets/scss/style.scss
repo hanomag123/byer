@@ -16,6 +16,7 @@ html {
   font-style: normal;
   background-color: var(--lighttheme);
   transition: background-color 0.4s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
   ::-webkit-scrollbar {
     width: 0;
   }
@@ -38,8 +39,12 @@ html {
 
   
 }
-
-
+.button-wrapper {
+  transition: transform .3s ease-in-out;
+}
+button:hover .button-wrapper {
+  transform: translateX(1rem);
+}
 
 *,
 *:before,

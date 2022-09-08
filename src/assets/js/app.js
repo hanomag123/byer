@@ -75,30 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 //  }
 
   
-const swiper = new Swiper(".mySwiper", {
-  slidesPerView: 1,
-  loop: true,
-  navigation: {
-      nextEl: ".mySwiper__button",
-  },
-});
-
-const swiper2 = new Swiper(".projects__swiper", {
-  slidesPerView: 1.2,
-  spaceBetween: 10,
-  loop: true,
-  navigation: {
-      nextEl: ".projects__button",
-  },
-  breakpoints: {
-    // when window width is >= 640px
-    650: {
-      slidesPerView: 2,
-      spaceBetween: 15
-    }
-  }
-});
-
 
 
 
@@ -140,8 +116,6 @@ for (i = 0; i < acc.length; i++) {
 }
 acc[0].click()
 
-
-
 const calcButton = document.querySelector('.calc__button')
 const formSubmit = document.querySelector('.main-submit')
 formSubmit.addEventListener('click', () => {
@@ -155,8 +129,11 @@ calcButton.addEventListener('click', () => {
 for(let form of document.forms) {
   form.addEventListener('submit', () => {
     event.preventDefault()
+    console.log('hello')
     formSubmit.hidden = !formSubmit.hidden
-    form.querySelector('.close-icon').click()
+    if (form.querySelector('.close-icon')) {
+      form.querySelector('.close-icon').click()
+    }
     disableScroll()
   })
 }
@@ -172,7 +149,7 @@ const selectFunc = () => {
     ll = selElmnt.length;
     /* For each element, create a new DIV that will act as the selected item: */
     a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected select-selected--light");
+    a.setAttribute("class", "select-selected");
     a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
     x[i].appendChild(a);
     /* For each element, create a new DIV that will contain the option list: */
@@ -254,12 +231,14 @@ const orderbutton = document.querySelector('.order__button')
 const modaloverlay = document.querySelector('.modal-overlay')
 const mainModal = document.querySelector('.main-form')
 const mainFormOverlay = document.querySelector('.main-form__overlay')
-const mainModalCloseIcon = mainModal.querySelector('.close-icon')
-
+const mainModalCloseIcon = document.querySelectorAll('.close-icon')
+mainModalCloseIcon.forEach(el => {
+  el.addEventListener('click', closeModal)
+})
 
 function changeButton() {
   if (modal && orderbutton && modaloverlay) {
-    mainModalCloseIcon.addEventListener('click', firstModalToggle)
+
     mainFormOverlay.addEventListener('click', firstModalToggle)
     modaloverlay.addEventListener('click', toggleModal)
     orderbutton.addEventListener('click', () => {
@@ -283,6 +262,16 @@ function changeButton() {
       }
     })
   }
+}
+function closeModal () {
+  event.preventDefault()
+
+  const modals = document.querySelectorAll('.modal')
+  modaloverlay.hidden = true
+  modals.forEach(el => {
+    el.hidden = true
+  })
+  enableScroll()
 }
 function firstModalToggle () {
   event.preventDefault()
@@ -361,15 +350,16 @@ addMask()
 const navButton = document.querySelectorAll('.nav-button')
 const leftBlocks = document.querySelectorAll('.home__text-wrapper')
 const rightBlocks = document.querySelectorAll('.right-block')
+const main = document.querySelector('main')
 
 if (window.matchMedia("(min-width: 1025px)").matches) {
   /* the viewport is at least 400 pixels wide */
-  document.body.classList.add('isDesc')
-  document.body.classList.remove('isMobile')
+  main.classList.add('isDesc')
+  main.classList.remove('isMobile')
   maxApp()
 } else {
-  document.body.classList.remove('isDesc')
-  document.body.classList.add('isMobile')
+  main.classList.remove('isDesc')
+  main.classList.add('isMobile')
   minApp()
 }
 const mutationObs = new MutationObserver((target) => {
@@ -385,14 +375,14 @@ const config = {
   attributeOldValue: true
 };
 
-mutationObs.observe(document.body, config)
+mutationObs.observe(main, config)
 window.addEventListener('resize', () => {
   if (window.innerWidth > 1024) {
-    document.body.classList.add('isDesc')
-    document.body.classList.remove('isMobile')
+    main.classList.add('isDesc')
+    main.classList.remove('isMobile')
   } else {
-    document.body.classList.remove('isDesc')
-    document.body.classList.add('isMobile')
+    main.classList.remove('isDesc')
+    main.classList.add('isMobile')
   }
 })
 function scroll(el) {
@@ -409,7 +399,6 @@ function maxApp () {
 
   navButton.forEach(el => {
     if (window.innerWidth <= 1024) {
-      console.log('hello')
       el.addEventListener('click', () => {
 
       })
@@ -422,11 +411,11 @@ function maxApp () {
   })
   function mainObserver() {
   const options = {
-    // rootMargin: '-200px'
     threshold: 0.1
   }
   function vdHandler(els) {
       els.forEach((data) => {
+        // console.log(data)
       if (data.isIntersecting === true) {
           data.target.classList.add('is-visible')
       } else {
@@ -471,14 +460,18 @@ if (window.innerWidth > 1024) {
   mainObserver()
 }
 function firstActive() {
-  const first = document.querySelector('.is-visible')
-
-
-
+  let first = null
+  const rightBlocksNews = document.querySelectorAll('.is-visible')
+  if (rightBlocksNews.length > 1) {
+    first = rightBlocksNews[1]
+  } else {
+    first = rightBlocksNews[0]
+  }
   leftBlocks.forEach(el => {
     removeClass(el, 'home__text-wrapper--active')
   })
   if (first) {
+
     const idname = first.id.slice(0, -7)
     const leftBlock = document.querySelector(`#${idname}`)
     const button = document.querySelector(`.nav-button[href="${idname}"]`)
@@ -574,20 +567,12 @@ function minApp () {
     }
   })
   navButton.forEach(el => {
-    if (window.innerWidth <= 1024) {
       el.addEventListener('click', () => {
         event.preventDefault()
         navClickHandler(el)
-        console.log(menuClass.closeMenu())
-      })
-    } else {
-      el.removeEventListener('click', () => {
-        event.preventDefault()
-        navClickHandler(el)
-      })
-    }
+        menuClass.closeMenu()
   })
-
+  })
   function navClickHandler (el) {
     const idname = el.href.replace(/^.*(?=\/)./gi, '')
     const leftBlock = document.querySelector(`#${idname}`)
@@ -626,10 +611,38 @@ function minApp () {
 
 
 
+const swiper = new Swiper(".mySwiper", {
+  slidesPerView: 1,
+  loop: true,
+  autoplay: {
+    delay: 2000,
+  },
+  navigation: {
+      nextEl: ".mySwiper__button",
+  },
+});
+
+const swiper2 = new Swiper(".projects__swiper", {
+  slidesPerView: 1.2,
+  spaceBetween: 10,
+  loop: true,
+  autoplay: {
+    delay: 2000,
+  },
+  navigation: {
+      nextEl: ".projects__button",
+  },
+  breakpoints: {
+    // when window width is >= 640px
+    650: {
+      slidesPerView: 2.1,
+      spaceBetween: 15
+    }
+  }
+});
+
 
 })
-
-
 
 
 

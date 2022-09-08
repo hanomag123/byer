@@ -72,7 +72,7 @@ div.about-us {
     }
     .mySwiper__imgContainer {
       display: block;
-      height: 100%;
+      height: 50rem;
       width: 100%;
 
       img {
@@ -89,13 +89,13 @@ div.about-us {
       margin-top: 15rem;
     }
     @include breakpoint($sm-bp) {
-      margin-top: 12rem;
+      margin-top: 6rem;
     }
     .about-us__accordion-item.page-wrapper {
       display: flex;
       align-items: center;
       background-color: var(--lighttheme);
-      padding-bottom: 1rem;
+      padding-bottom: 1.2rem;
       width: 100%;
       text-align: start;
       border: 0;
@@ -131,7 +131,6 @@ div.about-us {
     }
 
     .about-us__accordion-item--active {
-      padding-bottom: 4rem!important;
       @include breakpoint($cos-bp) {
         padding-bottom: 1rem!important;
       }
@@ -143,7 +142,7 @@ div.about-us {
     }
   
     div.about-us__acc-wrapper.page-wrapper {
-      padding-left: 14rem;
+      padding-left: 24rem;
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
@@ -170,8 +169,12 @@ div.about-us {
         }
       }
   
-      a.mySwiper__imgContainer {
+      a.about-us__imgContainer {
         width: 100%;
+        min-height: 50rem;
+        @include breakpoint($sm-bp) {
+          min-height: 30rem;
+        }
         img {
           width: 100%;
           height: 100%;

@@ -40,9 +40,16 @@
         border-bottom: 0.1rem solid var(--darktheme);
         transform: rotate(-45deg);
         transform-origin: right;
+        @include breakpoint($sm-bp) {
+          top: 1rem;
+          left: 0.7rem;
+        }
       }
       .stages__list-title {
-
+        padding-bottom: 1rem;
+        @include breakpoint($sm-bp) {
+          padding-bottom: 1.2rem;
+        }
       }
 
       .stages__list-desc {

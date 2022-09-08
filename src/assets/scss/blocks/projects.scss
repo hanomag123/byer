@@ -1,17 +1,22 @@
 div.projects {
-  margin-top: 10rem;
+  margin-top: 12rem;
   @include breakpoint($sm-bp) {
     margin-top: 0;
   }
   div.projects__title-wrapper.page-wrapper {
-    padding-bottom: 6rem;
+    padding-bottom: 8rem;
   }
 
   div.projects__swiper-wrapper.page-wrapper {
+    padding-right: 0;
     div.projects__button-wrapper {
       display: flex;
       justify-content: flex-end;
       padding-bottom: 2rem;
+      padding-right: 6rem;
+      @include breakpoint($sm-bp) {
+        padding-right: 1.2rem;
+      }
       button.projects__button {
         border: 0;
         svg.arrow.about-us__icon {
@@ -23,19 +28,25 @@ div.projects {
     }
 
     div.swiper.projects__swiper {
+      height: 62rem;
+      @include breakpoint($cos-bp) {
+        height: 40rem!important;
+      }
       div.swiper-wrapper {
         div.swiper-slide {
           div.swiper__slide-wrapper {
+            height: 100%;
             div.swiper__title.bold22 {
               padding-bottom: 1.5rem;
             }
 
             a.swiper__imgContainer {
               display: block;
+              height: 100%;
               img {
                 width: 100%;
                 height: 100%;
-                object-fit: contain;
+                object-fit: cover;
               }
             }
           }

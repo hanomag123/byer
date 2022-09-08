@@ -1,21 +1,26 @@
 <div class="main">
-    <form class="main-form" hidden>
+    <div class="preloader">
+        <div class="spin">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
+    <form class="main-form modal" hidden>
         <button class="close-icon"></button>
         <div class="bold50">Заказать проект</div>
         <div class="reg18">Оставьте заявку на составление проекта и мы свяжемся с вами для уточнения деталей</div>
         <div class="form-container">
-            <input type="text" class="custom-input" placeholder="Имя">
-            <input type="tel" class="custom-input" placeholder="Телефон">
+            <input type="text" class="custom-input" placeholder="Имя" required>
+            <input type="tel" class="custom-input" placeholder="Телефон" required>
             <input type="text" class="custom-input" placeholder="Сообщение">
             <div class="form-container__doc">
                 <label class="custom-checkbox">
-                    <input type="checkbox" value="value-1">
+                    <input type="checkbox" value="value-1" required>
                     <span class="med14 contacts__checkbox">Согласен на обработку персональных данных</span>
                 </label>
             </div>
             <button class="bold18" type="submit">
                 <span>Отправить</span>
-                <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                <div class="button-wrapper"><svg class="arrow"><use href="#orderIcon"></use></svg></div>
             </button>
         </div>
     </form>
@@ -139,17 +144,23 @@
 
             <div class="about-us__wrapper">
                 <div class="page-wrapper mySwiper__button-wrapper">
-                    <button class="mySwiper__button"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></button>
+                    <button class="mySwiper__button"><div class="button-wrapper"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></div></button>
                 </div>
                 
                 <div class="about-us__slaider page-wrapper">
                     <div class="swiper mySwiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a>
+                                <a data-fancybox="gallery"  href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a>
                             </div>
                             <div class="swiper-slide">
-                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide1.jpg" alt="slide"></a>
+                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide2.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide2.jpg" alt="slide"></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide3.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide3.jpg" alt="slide"></a>
+                            </div>
+                            <div class="swiper-slide">
+                                <a data-fancybox="gallery" href="./assets/images/aboutUs/slide4.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/slide4.jpg" alt="slide"></a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +176,7 @@
                 <div class="about-us__acc-wrapper page-wrapper">
                     <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
                     <div class="acc-stroke"></div>
-                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="about-us__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
                 </div>
 
                 <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
@@ -173,9 +184,9 @@
                     <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                 </button>
                 <div class="about-us__acc-wrapper page-wrapper">
-                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="about-us__acc-desc reg18">Основываясь на современных стилях, облик дома будет сочетать в себе эстетику и комфорт.</div>
                     <div class="acc-stroke"></div>
-                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-2.jpg" class="about-us__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-2.jpg" alt="slide"></a>
                 </div>
 
                 <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
@@ -183,9 +194,9 @@
                     <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                 </button>
                 <div class="about-us__acc-wrapper page-wrapper">
-                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="about-us__acc-desc reg18">Надежность конструкций и долговечность примененных строительный материалов, гарантируют долговечную эксплуатацию здания</div>
                     <div class="acc-stroke"></div>
-                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-3.jpg" class="about-us__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-3.jpg" alt="slide"></a>
                 </div>
 
                 <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
@@ -193,9 +204,9 @@
                     <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                 </button>
                 <div class="about-us__acc-wrapper page-wrapper">
-                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="about-us__acc-desc reg18">Примененный в проекте материалы отвечают высокому классу энергоэффективности </div>
                     <div class="acc-stroke"></div>
-                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-4.jpg" class="about-us__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-4.jpg" alt="slide"></a>
                 </div>
 
                 <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
@@ -203,9 +214,9 @@
                     <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                 </button>
                 <div class="about-us__acc-wrapper page-wrapper">
-                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="about-us__acc-desc reg18">Примененное в проекте  оборудование полностью автоматизирует быт потребителя.</div>
                     <div class="acc-stroke"></div>
-                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-5.jpg" class="about-us__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-5.jpg" alt="slide"></a>
                 </div>
 
                 <button class="about-us__accordion-item about-us__accordion-item--active page-wrapper">
@@ -213,9 +224,9 @@
                     <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                 </button>
                 <div class="about-us__acc-wrapper page-wrapper">
-                    <div class="about-us__acc-desc reg18">Индивидуальный подход к каждому проекту</div>
+                    <div class="about-us__acc-desc reg18">На всех этапах строительства наши специалисты ведет авторский надзор над реализацией проекта.</div>
                     <div class="acc-stroke"></div>
-                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-1.jpg" class="mySwiper__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-1.jpg" alt="slide"></a>
+                    <a data-fancybox="gallery" href="./assets/images/aboutUs/accordion/acc-6.jpg" class="about-us__imgContainer"><img src="./assets/images/aboutUs/accordion/acc-6.jpg" alt="slide"></a>
                 </div>
             </div>
 
@@ -228,7 +239,7 @@
 
             <div class="projects__swiper-wrapper page-wrapper">
                 <div class="projects__button-wrapper">
-                    <button class="projects__button"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></button>
+                    <button class="projects__button"><div class="button-wrapper"><svg class="arrow about-us__icon"><use href="#orderIcon"></use></svg></div></svg></button>
                 </div>
 
                 <div class="swiper projects__swiper">
@@ -256,6 +267,34 @@
                             <div class="swiper__title bold22">Инженерные решения</div>
                             <a data-fancybox="projects" href='./assets/images/projects/projects-3.jpg' class="swiper__imgContainer">
                                 <img src="./assets/images/projects/projects-3.jpg" alt="projects-img">
+                            </a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="swiper-slide">
+                        <div class="swiper__slide-wrapper">
+                            <div class="swiper__title bold22">Дизайн интерьера</div>
+                            <a data-fancybox="projects" href='./assets/images/projects/projects-4.jpg' class="swiper__imgContainer">
+                                <img src="./assets/images/projects/projects-4.jpg" alt="projects-img">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="swiper__slide-wrapper">
+                            <div class="swiper__title bold22">Ландшафтный дизайн</div>
+                            <a data-fancybox="projects" href='./assets/images/projects/projects-5.jpg' class="swiper__imgContainer">
+                                <img src="./assets/images/projects/projects-5.jpg" alt="projects-img">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                        <div class="swiper__slide-wrapper">
+                            <div class="swiper__title bold22">Умный дом</div>
+                            <a data-fancybox="projects" href='./assets/images/projects/projects-6.jpg' class="swiper__imgContainer">
+                                <img src="./assets/images/projects/projects-6.jpg" alt="projects-img">
                             </a>
                         </div>
                     </div>
@@ -360,16 +399,12 @@
                     </div>
                     
                     <div class="calc__container">
-                        <div class="calc__form-item">
-                            <h4 class="calc__form-title bold22">В каком городе/поселке планируется дом?</h4>
-                            <input  class="custom-input" type="text" name="city" placeholder="Город">
-                        </div>
 
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Материал конструкций</h4>
                             <div class="custom-select" style="width:100%">
                                 <select>
-                                  <option value="0">Кирпич / Железобетон / Сруб / Клееный брус</option>
+                                  <option value="0">Кирпич</option>
                                   <option value="1">Кирпич</option>
                                   <option value="2">Железобетон</option>
                                   <option value="3">Сруб</option>
@@ -377,11 +412,6 @@
                                   <option value="3">Иной</option>
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="calc__form-item">
-                            <h4 class="calc__form-title bold22">Когда вам нужен готовый проект?</h4>
-                            <input  class="custom-input" type="text" name="whenProject" placeholder="Через месяц">
                         </div>
 
                         <div class="calc__form-item">
@@ -414,7 +444,7 @@
                             <h4 class="calc__form-title bold22">Ландшафтный стиль</h4>
                             <div class="custom-select" style="width:100%">
                                 <select>
-                                  <option value="0">Выбрать ландшафтный стиль</option>
+                                  <option value="0">Другое</option>
                                   <option value="1">Деревенский</option>
                                   <option value="2">Японский</option>
                                   <option value="3">Голландский</option>
@@ -429,7 +459,7 @@
                             <h4 class="calc__form-title bold22">Дополнительные работы</h4>
                             <div class="custom-select" style="width:100%">
                                 <select>
-                                  <option value="0">Выбрать дополнительные работы</option>
+                                  <option value="0">Другое</option>
                                   <option value="1">Устройство газона</option>
                                   <option value="2">Создание пруда</option>
                                   <option value="3">Дренажные системы</option>
@@ -447,25 +477,26 @@
 
                     <button class="calc__button bold18">
                         <span>Заказать</span>
-                        <svg class="arrow calc__button-arrow"><use href="#orderIcon"></use></svg>
+                        <div class="button-wrapper"><svg class="arrow calc__button-arrow"><use href="#orderIcon"></use></svg></div>
                     </button>
 
-                    <div class="calc__modal-container" hidden>
+                    <div class="calc__modal-container modal" hidden>
                         <div class="bold50">Заказать проект</div>
                         <div class="reg18">Оставьте заявку на составление проекта и мы свяжемся с вами для уточнения деталей</div>
                         <div class="form-container">
-                            <input type="text" class="custom-input" placeholder="Имя">
-                            <input type="tel" class="custom-input" placeholder="Телефон">
+                            <button class="close-icon"></button>
+                            <input type="text" class="custom-input" placeholder="Имя" required>
+                            <input type="tel" class="custom-input" placeholder="Телефон" required>
                             <input type="text" class="custom-input" placeholder="Сообщение">
                             <div class="form-container__doc">
                                 <label class="custom-checkbox">
-                                    <input type="checkbox" value="value-1">
+                                    <input type="checkbox" value="value-1" required>
                                     <span class="med14 contacts__checkbox">Согласен на обработку персональных данных</span>
                                 </label>
                             </div>
                             <button class="bold18" type="submit">
                                 <span>Отправить</span>
-                                <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                                <div class="button-wrapper"><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                             </button>
                         </div>
                     </div>
@@ -486,15 +517,15 @@
                     </div>
                     <div class="contacts__container-item">
                         <h3 class="bold24">Почта</h3>
-                        <a class="reg18" href="tel:+ 7 (978) 357-98-93">byer-art@mail.ru</a>
+                        <a class="reg18" href="mailto:byer-art@mail.ru">byer-art@mail.ru</a>
                     </div>
                 </div>
                 <div class="contacts__container">
                     <h3 class="bold24">Напишите нам</h3>
                     <form class="form-container">
-                        <input type="text" class="custom-input" placeholder="Имя">
-                        <input type="tel" class="custom-input" placeholder="Телефон">
-                        <input type="text" class="custom-input" placeholder="Сообщение">
+                        <input type="text" class="custom-input" name="name" placeholder="Имя" required>
+                        <input type="tel" class="custom-input" name='phone' placeholder="Телефон" required>
+                        <input type="text" class="custom-input" name="message" placeholder="Сообщение">
                         <div class="form-container__doc">
                             <label class="custom-checkbox">
                                 <input type="checkbox" value="value-1">
@@ -503,7 +534,7 @@
                         </div>
                         <button class="bold18">
                             <span>Отправить</span>
-                            <div><svg class="arrow"><use href="#orderIcon"></use></svg></div>
+                            <div class="button-wrapper"><svg class="arrow"><use href="#orderIcon"></use></svg></div>
                         </button>
                     </form>
                 </div>

@@ -40,6 +40,7 @@ html {
   
 }
 .button-wrapper {
+  display: block;
   transition: transform .3s ease-in-out;
 }
 button:hover .button-wrapper {
@@ -50,6 +51,8 @@ button:hover .button-wrapper {
 *:before,
 *:after {
   box-sizing: inherit;
+  -webkit-font-feature-settings: "lnum";
+  -moz-font-feature-settings: "lnum";
 }
 
 body {

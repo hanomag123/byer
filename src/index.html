@@ -348,51 +348,51 @@
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Какие разделы вас интересуют?</h4>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="ArchitecturalSolutions">
                                 <span class="reg18">Архитектурные решения</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="ConstructiveDecisions">
                                 <span class="reg18">Конструктивные решения</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="EngineeringSolutions">
                                 <span class="reg18">Инженерные решения</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="SmartHomeTechnology">
                                 <span class="reg18">Технология “умный дом”</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="InteriorDesign">
                                 <span class="reg18">Дизайн интерьера</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="LandscapeDesign">
                                 <span class="reg18">Ландшафтный дизайн</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="PowerSupply">
                                 <span class="reg18">Электроснабжение</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="ElectricLighting">
                                 <span class="reg18">Электроосвещение</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="WaterSupply">
                                 <span class="reg18">Водоснабжение</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="Drainage">
                                 <span class="reg18">Водоотведение</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="Ventilation">
                                 <span class="reg18">Вентиляция</span>
                             </label>
                             <label class="calc__checkbox custom-checkbox">
-                                <input type="checkbox" value="value-1">
+                                <input type="checkbox" name="LowCurrentNetworks">
                                 <span class="reg18">Слаботочные сети</span>
                             </label>
                         </div>
@@ -403,7 +403,7 @@
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Материал конструкций</h4>
                             <div class="custom-select" style="width:100%">
-                                <select>
+                                <select name="Construction material">
                                   <option value="0">Кирпич</option>
                                   <option value="1">Кирпич</option>
                                   <option value="2">Железобетон</option>
@@ -417,7 +417,7 @@
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Сколько этажей планируется в доме?</h4>
                             <div class="custom-select" style="width:100%">
-                                <select>
+                                <select name="HowManyFloors">
                                   <option value="0">1</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
@@ -429,7 +429,7 @@
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Количество человек?</h4>
                             <div class="custom-select" style="width:100%">
-                                <select>
+                                <select name="NumberOfPersons?">
                                   <option value="0">1</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
@@ -443,7 +443,7 @@
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Ландшафтный стиль</h4>
                             <div class="custom-select" style="width:100%">
-                                <select>
+                                <select name="LandscapeStyle">
                                   <option value="0">Другое</option>
                                   <option value="1">Деревенский</option>
                                   <option value="2">Японский</option>
@@ -458,7 +458,7 @@
                         <div class="calc__form-item">
                             <h4 class="calc__form-title bold22">Дополнительные работы</h4>
                             <div class="custom-select" style="width:100%">
-                                <select>
+                                <select name="AdditionalWork">
                                   <option value="0">Другое</option>
                                   <option value="1">Устройство газона</option>
                                   <option value="2">Создание пруда</option>
@@ -485,9 +485,9 @@
                         <div class="reg18">Оставьте заявку на составление проекта и мы свяжемся с вами для уточнения деталей</div>
                         <div class="form-container">
                             <button class="close-icon"></button>
-                            <input type="text" class="custom-input" placeholder="Имя" required>
-                            <input type="tel" class="custom-input" placeholder="Телефон" required>
-                            <input type="text" class="custom-input" placeholder="Сообщение">
+                            <input type="text" class="custom-input" placeholder="Имя" name="name" required>
+                            <input type="tel" class="custom-input" placeholder="Телефон" name="tel" required>
+                            <input type="text" class="custom-input" placeholder="Сообщение" name="message">
                             <div class="form-container__doc">
                                 <label class="custom-checkbox">
                                     <input type="checkbox" value="value-1" required>

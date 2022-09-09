@@ -95,6 +95,9 @@
           transition: width 0.4s ease-in-out;
           width: 0;
         }
+        @include breakpoint($cos-bp) {
+          font-size: max(1em, 10px);
+        }
         @include breakpoint($sm-bp) {
           font-family: $bold;
           font-size: 3rem;

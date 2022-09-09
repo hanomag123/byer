@@ -39,6 +39,12 @@ html {
 
   
 }
+.button-text {
+  padding-top: 0.2rem;
+  @include breakpoint($sm-bp) {
+    padding-top: 0!important;
+  }
+}
 .button-wrapper {
   display: block;
   transition: transform .3s ease-in-out;

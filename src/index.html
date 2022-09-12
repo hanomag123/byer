@@ -336,7 +336,6 @@
             <div class="calc__wrapper page-wrapper">
                 <h3 class="calc__title bold50">Калькулятор стоимости проекта</h3>
                 <form action="post" class="calc__form">
-                    <div class="calc__container">
                         <!-- <div class="calc__form-item">
                             <h4 class="calc__form-title bold18">Ориентировочная площадь дома</h4>
                             <div class="range-input calc__range-input">
@@ -345,19 +344,23 @@
                             </div>
                         </div> -->
     
-                        <div class="calc__form-item">
-                            <h4 class="calc__form-title bold18">Какие разделы вас интересуют?</h4>
+                        <div class="calc__container">
                             <label class="calc__checkbox custom-checkbox accordion__item">
                                 <input type="checkbox" name="ArchitecturalSolutions">
                                 <span class="med36">Архитектурные решения</span>
                             </label>
 
-                                <div class="accordion__wrapper">
+                                <div class="accordion__wrapper calc__acc-wrapper">
                                     <div class="calc__form-item">
-                                        <h4 class="calc__form-title bold18">Количество человек?</h4>
+                                        <h4 class="calc__form-title bold18">Общая плошадь, м2</h4>
+                                        <input type="number" min="1" class="custom-input" placeholder="Площадь" name="square">
+                                    </div>
+
+                                    <div class="calc__form-item">
+                                        <h4 class="calc__form-title bold18">Этажность</h4>
                                         <div class="custom-select" style="width:100%">
-                                            <select name="NumberOfPersons?">
-                                              <option value="0">1</option>
+                                            <select name="NumberOfFloors">
+                                              <option value="none">Укажите количество этажей</option>
                                               <option value="1">1</option>
                                               <option value="2">2</option>
                                               <option value="3">3</option>
@@ -368,29 +371,15 @@
                                     </div>
 
                                     <div class="calc__form-item">
-                                        <h4 class="calc__form-title bold18">Количество человек?</h4>
+                                        <h4 class="calc__form-title bold18">Количество человек</h4>
                                         <div class="custom-select" style="width:100%">
                                             <select name="NumberOfPersons?">
-                                              <option value="0">1</option>
+                                              <option value="none">Укажите сколько человек будет проживать в доме</option>
                                               <option value="1">1</option>
                                               <option value="2">2</option>
                                               <option value="3">3</option>
-                                              <option value="3">4 - 10</option>
-                                              <option value="3">Другое</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="calc__form-item">
-                                        <h4 class="calc__form-title bold18">Количество человек?</h4>
-                                        <div class="custom-select" style="width:100%">
-                                            <select name="NumberOfPersons?">
-                                              <option value="0">1</option>
-                                              <option value="1">1</option>
-                                              <option value="2">2</option>
-                                              <option value="3">3</option>
-                                              <option value="3">4 - 10</option>
-                                              <option value="3">Другое</option>
+                                              <option value="4">4 - 10</option>
+                                              <option value="5">Другое</option>
                                             </select>
                                         </div>
                                     </div>
@@ -401,17 +390,17 @@
                                 <span class="med36">Конструктивные решения</span>
                             </label>
 
-                            <div class="accordion__wrapper">
+                            <div class="accordion__wrapper calc__acc-wrapper">
                                 <div class="calc__form-item">
                                     <h4 class="calc__form-title bold18">Материал конструкций</h4>
                                     <div class="custom-select" style="width:100%">
-                                        <select name="Construction material">
-                                          <option value="0">Кирпич</option>
+                                        <select name="ConstructionMaterial">
+                                          <option value="none">Газобетон / кирпич / сруб /железобетон </option>
                                           <option value="1">Кирпич</option>
                                           <option value="2">Железобетон</option>
                                           <option value="3">Сруб</option>
-                                          <option value="3">Клееный брус</option>
-                                          <option value="3">Иной</option>
+                                          <option value="4">Клееный брус</option>
+                                          <option value="5">Иной</option>
                                         </select>
                                     </div>
                                 </div>
@@ -422,7 +411,7 @@
                                 <span class="med36">Инженерные решения</span>
                             </label>
 
-                                <div class="accordion__wrapper">
+                                <div class="accordion__wrapper calc__acc-wrapper">
                                     <label class="calc__checkbox custom-checkbox">
                                         <input type="checkbox" name="PowerSupply">
                                         <span class="reg18">Электроснабжение</span>
@@ -453,18 +442,18 @@
                                 <input type="checkbox" name="SmartHomeTechnology">
                                 <span class="med36">Технология “умный дом”</span>
                             </label>
-
+                            <div class="calc__acc-wrapper"></div>
                             <label class="calc__checkbox custom-checkbox accordion__item">
                                 <input type="checkbox" name="InteriorDesign">
                                 <span class="med36">Дизайн интерьера</span>
                             </label>
 
-                                <div class="accordion__wrapper">
+                                <div class="accordion__wrapper calc__acc-wrapper">
                                     <div class="calc__form-item">
                                         <h4 class="calc__form-title bold18">Варианты проработки</h4>
                                         <div class="custom-select" style="width:100%">
                                             <select name="Construction material">
-                                                <option value="0">Эскизный проект</option>
+                                                <option value="none">Эскизный проект / рабочий проект</option>
                                                 <option value="1">Эскизный проект</option>
                                                 <option value="2">Рабочий проект</option>
                                             </select>
@@ -472,30 +461,30 @@
                                     </div>
 
                                     <div class="calc__form-item">
-                                        <h4 class="calc__form-title bold18">Общая площадь</h4>
-                                        <input  class="custom-input" type="text" name="roomNames" placeholder="Перечень помещений">
+                                        <h4 class="calc__form-title bold18">Общая площадь, м2</h4>
+                                        <input  class="custom-input" type="number" min="1" name="squareInterier" placeholder="Укажите площадь">
                                     </div>
 
                                     <div class="calc__form-item">
                                         <h4 class="calc__form-title bold18">Ландшафтный стиль</h4>
                                         <div class="custom-select" style="width:100%">
                                             <select name="LandscapeStyle">
-                                              <option value="0">Другое</option>
+                                              <option value="none">Выберите ландшафтный стиль</option>
                                               <option value="1">Классический</option>
                                               <option value="2">Лофт</option>
                                               <option value="3">Прованс</option>
-                                              <option value="3">Арт-деко</option>
-                                              <option value="3">Винтаж</option>
-                                              <option value="3">Модерн</option>
-                                              <option value="3">Хай-тек</option>
-                                              <option value="3">Другое</option>
+                                              <option value="4">Арт-деко</option>
+                                              <option value="5">Винтаж</option>
+                                              <option value="6">Модерн</option>
+                                              <option value="7">Хай-тек</option>
+                                              <option value="8">Другое</option>
                                             </select>
                                         </div>
                                     </div>
 
                                     <div class="calc__form-item">
-                                        <h4 class="calc__form-title bold18">Перечень помещений</h4>
-                                        <input  class="custom-input" type="text" name="roomNames" placeholder="Перечень помещений">
+                                        <h4 class="calc__form-title bold18">Помещения</h4>
+                                        <input  class="custom-input" type="text" name="roomNames" placeholder="Укажите перечень помещений">
                                     </div>
                                 </div>
                                 
@@ -504,18 +493,18 @@
                                 <span class="med36">Ландшафтный дизайн</span>
                             </label>
                             
-                            <div class="accordion__wrapper">
+                            <div class="accordion__wrapper calc__acc-wrapper">
 
                                 <div class="calc__form-item">
-                                    <h4 class="calc__form-title bold18">Перечень помещений</h4>
+                                    <h4 class="calc__form-title bold18">Общая площадь, м2</h4>
                                     <input  class="custom-input" type="text" name="roomNames" placeholder="Перечень помещений">
                                 </div>
                                 
                                 <div class="calc__form-item">
-                                    <h4 class="calc__form-title bold18">Ландшафтный стиль</h4>
+                                    <h4 class="calc__form-title bold18">Стиль</h4>
                                     <div class="custom-select" style="width:100%">
-                                        <select name="LandscapeStyle">
-                                          <option value="0">Другое</option>
+                                        <select name="Style">
+                                          <option value="none">Деревенский / японский / голландский</option>
                                           <option value="1">Деревенский</option>
                                           <option value="2">Японский</option>
                                           <option value="3">Голландский</option>
@@ -530,7 +519,7 @@
                                     <h4 class="calc__form-title bold18">Дополнительные работы</h4>
                                     <div class="custom-select" style="width:100%">
                                         <select name="AdditionalWork">
-                                          <option value="0">Другое</option>
+                                          <option value="none">Устройство газона / создание пруда</option>
                                           <option value="1">Устройство газона</option>
                                           <option value="2">Создание пруда</option>
                                           <option value="3">Дренажные системы</option>
@@ -541,7 +530,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
 
                     <button class="calc__button bold18">
                         <span class="button-text">Заказать</span>

@@ -355,7 +355,10 @@ input[type="radio"] {
   *width: 13px; /* 3 */
 }
 input[type="checkbox"] {
-  visibility: hidden;
+  // visibility: hidden;
+}
+label {
+  cursor: pointer;
 }
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.

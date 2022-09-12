@@ -5,7 +5,9 @@
   @include breakpoint($sm-bp) {
     padding-bottom: 5rem;
     padding-top: 0;
+    min-height: min-content;
   }
+  
   div.calc__wrapper {
     h3.calc__title {
       padding-bottom: 7rem;
@@ -19,28 +21,37 @@
       grid-template-columns: 1fr;
       justify-content: space-between;
       column-gap: 8.6rem;
-      row-gap: 5rem;
+      row-gap: 4rem;
       @include breakpoint($cos-bp) {
         grid-template-columns: 1fr;
       }
       @include breakpoint($sm-bp) {
         row-gap: 4rem;
       }
+      .accordion__item--active {
+        padding-bottom: 2rem;
+      }
       .calc__container {
         display: flex;
         flex-direction: column;
-        gap: 5rem;
         @include breakpoint($sm-bp) {
-          gap: 4rem;
         }
-
+        .calc__acc-wrapper {
+          margin-bottom: 3rem;
+          display: flex;
+          flex-direction: column;
+          row-gap: 2rem;
+        }
         div.calc__form-item {
           display: flex;
           flex-direction: column;
-          gap: 1.5rem;
           padding: 0.1rem;
+          width: 40rem;
+          @include breakpoint($sm-bp) {
+            width: 100%;
+          }
           .calc__form-title {
-  
+            padding-bottom: 0.5rem;
           }
           .calc__checkbox {
             cursor: pointer;
@@ -115,8 +126,8 @@
 .custom-checkbox>span::before {
   content: '';
   display: inline-block;
-  width: 1em;
-  height: 1em;
+  width: 2rem;
+  height: 2rem;
   flex-shrink: 0;
   flex-grow: 0;
   border: 1px solid $gray;
@@ -124,6 +135,14 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
+  @include breakpoint($cos-bp) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  @include breakpoint($cos-bp) {
+    width: 2rem;
+    height: 2rem;
+  }
 }
 
 /* стили при наведении курсора на checkbox */
@@ -194,6 +213,25 @@
     /* Черный */
     
     color: var(--darktheme);
+    @include breakpoint($cos-bp) {
+      font-size: 2rem;
+    }
+    @include breakpoint($xl-bp) {
+      font-size: 3rem;
+    }
+    @include breakpoint($sm-bp) {
+      font-size: 3rem;
+    }
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
   }
   .custom-input {
     font-family: $medium;
@@ -591,6 +629,11 @@ button {
 .accordion {
 
 }
+.accordion__item {
+  transition: padding .3s ease;
+}
+
+
 
 .accordion__wrapper {
   transition: max-height .3s ease;

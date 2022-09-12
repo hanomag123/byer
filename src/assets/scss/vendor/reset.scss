@@ -354,7 +354,9 @@ input[type="radio"] {
   *height: 13px; /* 3 */
   *width: 13px; /* 3 */
 }
-
+input[type="checkbox"] {
+  visibility: hidden;
+}
 /**
  * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome

@@ -103,7 +103,7 @@ div.about-us {
       transition: padding-bottom .2s, background-color 0.4s ease-in-out;
       @include breakpoint($sm-bp) {
         justify-content: space-between;
-        align-items: flex-end;
+        align-items: center;
         gap: 1rem;
       }
       h2.bold50.about-us__acc-title {

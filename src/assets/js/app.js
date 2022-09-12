@@ -98,23 +98,50 @@ function flipImg(el) {
 galleryImfFlip()
 
 let acc = document.querySelectorAll(".about-us__accordion-item");
-let i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("about-us__accordion-item--active");
-    let panel = this.nextElementSibling;
-    let button = this.querySelector('svg')
-    if (panel.style.maxHeight && button) {
-      panel.style.maxHeight = null;
-      button.classList.toggle('arrow--active');
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-      button.classList.toggle('arrow--active')
-    } 
-  });
+if (acc.length > 0) {
+  for (let i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("about-us__accordion-item--active");
+      let panel = this.nextElementSibling;
+      let button = this.querySelector('svg')
+      if (panel.style.maxHeight && button) {
+        panel.style.maxHeight = null;
+        button.classList.toggle('arrow--active');
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        button.classList.toggle('arrow--active')
+      } 
+    });
+  }
+  acc[0].click()
+} 
+
+let checkboxAcc = document.querySelectorAll(".accordion__item");
+
+if (checkboxAcc.length > 0) {
+  for (let i = 0; i < checkboxAcc.length; i++) {
+    checkboxAcc[i].addEventListener("click", function() {
+      event.preventDefault()
+      event.target.parentNode.querySelector('input[type="checkbox"]').checked = !event.target.parentNode.querySelector('input[type="checkbox"]').checked
+      this.classList.toggle("accordion__item--active");
+      let panel = this.nextElementSibling;
+      console.log(panel)
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        panel.style.setProperty('overflow', 'hidden')
+        panel.removeEventListener('transitionend', trans)
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        panel.addEventListener('transitionend', trans)
+      } 
+    });
+  }
+} 
+
+function trans () {
+  this.style.setProperty('overflow', 'visible')
 }
-acc[0].click()
 
 const calcButton = document.querySelector('.calc__button')
 const formSubmit = document.querySelector('.main-submit')
@@ -149,7 +176,7 @@ const selectFunc = () => {
     ll = selElmnt.length;
     /* For each element, create a new DIV that will act as the selected item: */
     a = document.createElement("DIV");
-    a.setAttribute("class", "select-selected");
+    a.setAttribute("class", "select-selected select-selected--light");
     a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
     x[i].appendChild(a);
     /* For each element, create a new DIV that will contain the option list: */
@@ -206,12 +233,15 @@ const selectFunc = () => {
     for (i = 0; i < yl; i++) {
       if (elmnt == y[i]) {
         arrNo.push(i)
+        y[i].classList.remove('select-selected--light')
       } else {
         y[i].classList.remove("select-arrow-active");
-        y[i].classList.remove('select-selected--light')
       }
     }
     for (i = 0; i < xl; i++) {
+      if (!x[i].querySelector('.same-as-selected')) {
+        x[i].previousSibling.classList.add('select-selected--light')
+      }
       if (arrNo.indexOf(i)) {
         x[i].classList.add("select-hide");
       }

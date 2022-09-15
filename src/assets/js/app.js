@@ -123,10 +123,11 @@ if (checkboxAcc.length > 0) {
   for (let i = 0; i < checkboxAcc.length; i++) {
     checkboxAcc[i].addEventListener("click", function() {
       event.preventDefault()
-      event.target.parentNode.querySelector('input[type="checkbox"]').checked = !event.target.parentNode.querySelector('input[type="checkbox"]').checked
+      // event.target.parentNode.querySelector('input[type="checkbox"]').checked = !event.target.parentNode.querySelector('input[type="checkbox"]').checked
+      this.querySelector('input[type="checkbox"]').toggleAttribute('checked')
       this.classList.toggle("accordion__item--active");
       let panel = this.nextElementSibling;
-      console.log(panel)
+      // console.log(panel)
       if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
         panel.style.setProperty('overflow', 'hidden')
@@ -153,10 +154,11 @@ calcButton.addEventListener('click', () => {
   event.preventDefault()
   toggleModal()
 })
+
+
 for(let form of document.forms) {
   form.addEventListener('submit', () => {
     event.preventDefault()
-    console.log('hello')
     formSubmit.hidden = !formSubmit.hidden
     if (form.querySelector('.close-icon')) {
       form.querySelector('.close-icon').click()
